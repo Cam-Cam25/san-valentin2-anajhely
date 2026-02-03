@@ -1,361 +1,209 @@
-/* ---------- RESET ---------- */
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+
 body{
   margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   background:#fdecee;
-  color:#7a1730;
-  overflow-x:hidden;
+  color:#6b0f2a;
 }
 
-/* ---------- FONDO ---------- */
 .bg{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 15% 25%, rgba(255,80,140,.14), transparent 46%),
-    radial-gradient(circle at 85% 35%, rgba(255,160,210,.18), transparent 45%),
-    radial-gradient(circle at 35% 85%, rgba(255,120,170,.10), transparent 55%),
+    radial-gradient(circle at 20% 20%, rgba(255,120,170,.15), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255,160,200,.18), transparent 45%),
     #fdecee;
-  z-index:-2;
+  z-index:-1;
 }
 
-/* ---------- LAYOUT BASE ---------- */
-/* PC: centrado con espacio alrededor
-   CEL: ocupa casi todo el ancho */
 .wrap{
-  min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:28px 12px 70px;
+  padding:30px 10px 70px;
 }
 
-/* “revista / hoja” */
 .paper{
-  width:min(520px, 92vw);          /* ✅ celular: casi todo el ancho */
-  max-width: 560px;               /* ✅ PC: no se hace gigante */
+  width:min(520px, 96vw);
 }
 
-/* Caja rosada con borde */
 .paper-inner{
-  background: rgba(255, 210, 226, .55);
-  border: 2px solid rgba(255, 120, 160, .65);
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0,0,0,.12);
-  padding: 14px;
-  position:relative;
+  background:rgba(255,210,226,.6);
+  border:2px solid #ff7aa2;
+  border-radius:12px;
+  padding:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
-/* ---------- TOP BARS ---------- */
+/* CABECERA */
 .topbar, .subbar{
   display:flex;
   justify-content:space-between;
-  gap:10px;
   font-size:12px;
   letter-spacing:1px;
-  text-transform:uppercase;
-  color:#6b1730;
+  border-bottom:2px solid #ff4d7a;
+  padding:6px;
 }
 
-.topbar{
-  padding:6px 6px 10px;
-  border-bottom:2px solid rgba(255, 80, 120, .85);
-}
-
-.mast-title{
-  margin:10px 0 8px;
+.title-main{
   text-align:center;
-  font-family: "Georgia", serif;
-  font-size:52px;
-  line-height:1;
-  color:#e3003f;
-  font-weight:800;
-  letter-spacing:1px;
+  font-size:48px;
+  color:#e6003f;
+  margin:12px 0;
 }
 
 .subbar{
-  padding:10px 6px 12px;
-  border-top:2px solid rgba(255, 80, 120, .85);
-  border-bottom:2px solid rgba(255, 80, 120, .85);
+  border-top:2px solid #ff4d7a;
+  border-bottom:2px solid #ff4d7a;
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 .hero{
-  position:relative;
-  padding:18px 10px 14px;
-  margin:6px 0 12px;
-}
-
-.cherub{
-  position:absolute;
-  width:90px;
-  height:90px;
-  border:2px solid rgba(227,0,63,.35);
-  border-radius:18px;
-  opacity:.18;
-}
-.cherub.left{ left:6px; top:10px; transform:rotate(8deg); }
-.cherub.right{ right:6px; top:10px; transform:rotate(-8deg); }
-
-.hero-text{
   text-align:center;
-  color:#e3003f;
-}
-.hero-line-1{
-  font-size:34px;
-  letter-spacing:6px;
-  font-weight:900;
-}
-.hero-line-2{
-  font-family:"Georgia", serif;
-  font-size:92px;
-  font-style:italic;
-  margin-top:6px;
-  line-height:1;
+  padding:20px 10px;
 }
 
-.hero-mid{
-  text-align:center;
-  margin-top:10px;
-}
 .hero-small{
+  font-size:22px;
+  letter-spacing:5px;
+  margin:0;
+}
+
+.hero-big{
+  font-size:72px;
+  font-style:italic;
+  color:#e6003f;
+  margin:6px 0;
+}
+
+.distribution{
   font-size:12px;
   letter-spacing:1px;
-  text-transform:uppercase;
-  opacity:.85;
+  margin-top:10px;
 }
-.hero-name{
-  margin-top:6px;
-  font-family:"Georgia", serif;
-  font-style:italic;
+
+.name{
   font-size:18px;
-  color:#e3003f;
+  font-style:italic;
+  color:#e6003f;
+  margin-top:6px;
 }
 
-/* ---------- GRID DIARIO + FOTO ---------- */
-.content-grid{
+/* CONTENIDO */
+.content{
   display:grid;
-  grid-template-columns: 1.2fr .8fr;  /* ✅ PC: 2 columnas */
+  grid-template-columns:1.2fr .8fr;
   gap:14px;
-  margin-top:8px;
+  margin-top:10px;
 }
 
-.diary{
-  background: rgba(255,255,255,.45);
-  border:1px solid rgba(255,120,160,.25);
-  border-radius:10px;
+.text{
+  background:rgba(255,255,255,.5);
   padding:12px;
+  border-radius:10px;
 }
 
-.diary-head{
+.text-head{
   display:flex;
   justify-content:space-between;
-  gap:10px;
-  padding-bottom:8px;
+  border-bottom:1px solid #ff7aa2;
   margin-bottom:8px;
-  border-bottom:1px solid rgba(255,120,160,.35);
-  font-family:"Georgia", serif;
-  font-style:italic;
-  color:#6b1730;
 }
 
-.diary-text{
-  margin:0;
-  font-size:18px;
-  line-height:1.45;
-  color:#5a0f24;
-}
-
-.photo-block{
+.photo-box{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:8px;
 }
 
-.photo{
-  height:220px;
+.photo-placeholder{
+  height:200px;
+  border:2px solid #ff7aa2;
   border-radius:10px;
-  border:2px solid rgba(255,80,120,.65);
-  background:
-    radial-gradient(circle at 35% 30%, rgba(255,255,255,.55), transparent 50%),
-    linear-gradient(135deg, rgba(70,140,80,.35), rgba(20,90,40,.35));
-  position:relative;
-  overflow:hidden;
+  background:linear-gradient(135deg,#8bcf9a,#3c8c5a);
 }
 
-.photo-hearts{
-  position:absolute;
-  right:12px;
-  bottom:12px;
-  width:36px;
-  height:60px;
-  opacity:.9;
-  background:
-    radial-gradient(circle at 50% 15%, rgba(255,255,255,.9), transparent 40%),
-    radial-gradient(circle at 40% 45%, rgba(255,80,140,.85), transparent 45%),
-    radial-gradient(circle at 60% 70%, rgba(255,80,140,.85), transparent 45%);
+.photo-caption{
+  text-align:right;
+  font-size:12px;
 }
 
 .mission{
-  padding:12px 10px;
+  padding:10px;
   border-radius:10px;
-  border:2px solid rgba(255,80,120,.75);
-  background: rgba(255,255,255,.60);
-  color:#b3003a;
-  font-weight:900;
+  border:2px solid #ff4d7a;
+  background:white;
+  font-weight:bold;
   cursor:pointer;
 }
 
-/* ---------- CUTLINE ---------- */
+/* CUPONES */
 .cutline{
-  margin:14px 0 10px;
-  border-top:2px dashed rgba(227,0,63,.45);
-  border-bottom:2px dashed rgba(227,0,63,.45);
-  height:18px;
-  position:relative;
-}
-.scissor{
-  position:absolute;
-  left:-2px;
-  top:-12px;
-  font-size:18px;
-  color:rgba(227,0,63,.7);
-}
-.scissor.right{
-  left:auto;
-  right:-2px;
+  border-top:2px dashed #e6003f;
+  margin:16px 0;
 }
 
-/* ---------- CUPONES ---------- */
 .coupons{
   display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:14px;
-  margin-top:12px;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
 .coupon{
   display:grid;
-  grid-template-columns: 78px 1fr;
-  border-radius:12px;
+  grid-template-columns:80px 1fr;
+  border:2px solid #e6003f;
+  border-radius:10px;
   overflow:hidden;
-  border:2px solid rgba(227,0,63,.85);
-  background:#ffd2dc;
 }
 
 .stub{
-  background:#e3003f;
+  background:#e6003f;
   color:white;
-  padding:10px 8px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
   text-align:center;
-  position:relative;
-}
-.stub:before, .stub:after{
-  content:"";
-  position:absolute;
-  left:-10px;
-  width:20px; height:20px;
-  background:#fdecee;
-  border-radius:50%;
-}
-.stub:before{ top:18px; }
-.stub:after{ bottom:18px; }
-
-.stub-title{
-  font-size:10px;
-  letter-spacing:1px;
-  opacity:.95;
-}
-.stub-code{
-  font-weight:900;
-  letter-spacing:2px;
+  padding:8px;
+  font-size:12px;
 }
 
 .coupon-body{
-  padding:12px 12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:6px;
-}
-.coupon-top{
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:#b3003a;
-}
-.coupon-main{
-  font-family:"Georgia", serif;
-  font-style:italic;
-  font-size:18px;
-  color:#b3003a;
+  padding:10px;
 }
 
-/* ---------- BOTTOM ---------- */
-.bottomline{
-  margin-top:12px;
-  padding-top:8px;
-  border-top:2px solid rgba(255,80,120,.65);
+.footer{
   text-align:center;
+  margin-top:10px;
   font-size:11px;
   letter-spacing:2px;
-  color:#6b1730;
 }
 
-/* ---------- NAV BOTONES ABAJO ---------- */
+/* BOTONES */
 .nav{
-  margin-top:14px;
   display:flex;
   gap:12px;
-  justify-content:space-between;
+  margin-top:14px;
 }
 
 .btn{
   flex:1;
-  padding:12px 10px;
-  border-radius:10px;
-  border:2px solid rgba(255, 80, 120, .75);
-  background: rgba(255, 120, 160, .55);
-  color:#b3003a;
-  font-weight:900;
-  letter-spacing:.4px;
-  cursor:pointer;
+  padding:12px;
   text-align:center;
+  border-radius:10px;
+  border:2px solid #ff4d7a;
+  background:#ff9bb5;
+  color:#6b0f2a;
+  font-weight:bold;
   text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-.btn.ghost{ background: rgba(255,255,255,.55); }
-.btn:disabled{ opacity:.45; cursor:not-allowed; }
-
-/* ======================================================
-   ✅ MOBILE: que se vea como tu primera foto (grande)
-   ====================================================== */
-@media (max-width: 520px){
-  .paper{ width: 96vw; }           /* casi pantalla completa */
-  .paper-inner{ padding: 12px; }
-
-  .mast-title{ font-size: 44px; }
-  .hero-line-1{ font-size: 20px; letter-spacing:4px; }
-  .hero-line-2{ font-size: 64px; }
-
-  .content-grid{ grid-template-columns: 1fr; } /* ✅ una columna */
-  .diary-text{ font-size: 16px; }
-
-  .photo{ height: 240px; }
-
-  .coupons{ grid-template-columns: 1fr; }      /* cupones uno debajo de otro */
 }
 
-/* ======================================================
-   ✅ DESKTOP: que se vea como tu segunda foto (centrado)
-   ====================================================== */
-@media (min-width: 900px){
-  .wrap{ padding: 40px 18px 80px; }
-  .paper{ width: 560px; }         /* ancho “revista” */
+.btn.ghost{
+  background:white;
+  opacity:.6;
 }
+
+/* 📱 MOBILE */
+@media (max-width:520px){
+  .content{ grid-template-columns:1fr; }
+  .hero-big{ font-size:58px; }
+  .coupons{ grid-template-columns:1fr; }
+}
+
