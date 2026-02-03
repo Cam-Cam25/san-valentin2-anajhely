@@ -1,30 +1,28 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Valentine Edition</title>
-
-  <link rel="stylesheet" href="./style.css?v=1" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Fondo general -->
   <div class="bg"></div>
 
   <main class="wrap">
-    <!-- “Hoja / Revista” -->
     <section class="paper">
+
       <div class="paper-inner">
 
-        <!-- Barra superior -->
+        <!-- CABECERA -->
         <div class="topbar">
-          <span>EDICION ESPECIAL</span>
+          <span>EDICIÓN ESPECIAL</span>
           <span>AIREK_DESIGN</span>
           <span>FEBRERO 2026</span>
         </div>
 
-        <h1 class="mast-title">Valentine Edition</h1>
+        <h1 class="title-main">Valentine Edition</h1>
 
         <div class="subbar">
           <span>14 DE FEBRERO DEL 2026</span>
@@ -32,96 +30,81 @@
           <span>JUNTOS POR SIEMPRE</span>
         </div>
 
-        <!-- Hero -->
+        <!-- HERO -->
         <section class="hero">
-          <div class="cherub left" aria-hidden="true"></div>
-          <div class="cherub right" aria-hidden="true"></div>
+          <h2 class="hero-small">WILL YOU BE MY</h2>
+          <h1 class="hero-big">Valentine?</h1>
 
-          <div class="hero-text">
-            <div class="hero-line-1">WILL YOU BE MY</div>
-            <div class="hero-line-2">Valentine?</div>
+          <div class="distribution">
+            DISTRIBUCIÓN:<br>
+            EXCLUSIVA PARA LA PERSONA MÁS ESPECIAL
           </div>
 
-          <div class="hero-mid">
-            <div class="hero-small">
-              DISTRIBUCIÓN:<br>
-              EXCLUSIVA PARA LA PERSONA MÁS ESPECIAL
-            </div>
-            <div class="hero-name">Andahucía</div>
-          </div>
+          <div class="name">Anajhely</div>
         </section>
 
-        <!-- Diario + Foto -->
-        <section class="content-grid">
-          <article class="diary">
-            <div class="diary-head">
+        <!-- CONTENIDO -->
+        <section class="content">
+          <div class="text">
+            <div class="text-head">
               <span>Diario de amor:</span>
               <span>San Valentine</span>
             </div>
 
-            <p class="diary-text">
+            <p>
               Después de que el mundo hiciera su magia y los caminos se cruzaran,
-              quedó claro algo: quiero vivir este 14 de febrero contigo. Mi corazón
-              —la única fuente confiable en estos temas— lo tiene claro desde hace
-              tiempo. Quiero un San Valentín a tu lado, lleno de amor, risas sinceras
-              y momentos que se queden grabados.
+              quedó claro algo: quiero vivir este 14 de febrero contigo.
+              Mi corazón —la única fuente confiable en estos temas— lo tiene
+              claro desde hace tiempo. Quiero un San Valentín a tu lado,
+              lleno de amor, risas sinceras y momentos que se queden grabados.
             </p>
-          </article>
+          </div>
 
-          <aside class="photo-block">
-            <div class="photo">
-              <!-- aquí luego puedes poner una imagen real si quieres -->
-              <div class="photo-hearts" aria-hidden="true"></div>
-            </div>
-
-            <button class="mission" onclick="location.href='page3.html'">
+          <div class="photo-box">
+            <div class="photo-placeholder"></div>
+            <div class="photo-caption">♡ love</div>
+            <button class="mission">
               ¿Aceptas la misión de ser mi San Valentín?
             </button>
-          </aside>
+          </div>
         </section>
 
-        <!-- Línea punteada + tijeras -->
-        <div class="cutline">
-          <span class="scissor">✂</span>
-          <span class="scissor right">✂</span>
-        </div>
+        <!-- CUPONES -->
+        <div class="cutline"></div>
 
-        <!-- Cupones -->
         <section class="coupons">
           <div class="coupon">
             <div class="stub">
-              <div class="stub-title">SAN VALENTIN</div>
-              <div class="stub-code">0001</div>
+              <span>SAN VALENTÍN</span>
+              <strong>0001</strong>
             </div>
             <div class="coupon-body">
-              <div class="coupon-top">CUPON PARA:</div>
-              <div class="coupon-main">Una cita sorpresa</div>
+              <small>CUPÓN PARA:</small>
+              <strong>Una cita sorpresa</strong>
             </div>
           </div>
 
           <div class="coupon">
             <div class="stub">
-              <div class="stub-title">SAN VALENTIN</div>
-              <div class="stub-code">0002</div>
+              <span>SAN VALENTÍN</span>
+              <strong>0002</strong>
             </div>
             <div class="coupon-body">
-              <div class="coupon-top">CUPON PARA:</div>
-              <div class="coupon-main">Una ida al cine</div>
+              <small>CUPÓN PARA:</small>
+              <strong>Una ida al cine</strong>
             </div>
           </div>
         </section>
 
-        <div class="bottomline">
-          <span>AIREK_DESIGN</span>
-        </div>
-
+        <footer class="footer">AIREK_DESIGN</footer>
       </div>
 
-      <!-- Botones navegación (afuera del paper-inner, como en tu foto) -->
+      <!-- BOTONES -->
       <div class="nav">
         <button class="btn ghost" disabled>PAG. ANTERIOR</button>
-        <a class="btn" href="./page2.html">PAG. SIGUIENTE</a>
+        <a class="btn" href="page2.html">PAG. SIGUIENTE</a>
       </div>
+
     </section>
   </main>
 </body>
