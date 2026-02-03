@@ -25,12 +25,27 @@ body{
 }
 
 .paper{
-  width:min(440px, 92vw);
+  width: min(440px, 92vw);  /* celular y pantallas pequeñas */
   background: rgba(255, 210, 226, .55);
   border: 2px solid rgba(255, 120, 160, .65);
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0,0,0,.10);
   padding: 14px;
+}
+
+/* ✅ PC / pantallas grandes: que se vea grandote */
+@media (min-width: 900px){
+  .paper{
+    width: 720px;     /* prueba 680–820 según te guste */
+    padding: 18px;
+  }
+}
+
+/* ✅ Pantallas MUY grandes (opcional) */
+@media (min-width: 1200px){
+  .paper{
+    width: 820px;
+  }
 }
 
 .paper-inner{ position:relative; }
@@ -447,4 +462,15 @@ body{
   .content-grid{ grid-template-columns: 1fr; }
   .signals-grid{ grid-template-columns: 1fr; }
   .reasons-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px){
+  .logo{ font-size: 52px; }                 /* Valentine Edition arriba */
+  .hero-title .small{ font-size: 14px; }    /* WILL YOU BE MY */
+  .hero-title .big{ font-size: 78px; }      /* Valentine? grandote */
+  .distribution{ font-size: 12px; }
+  .name-script{ font-size: 22px; }
+
+  .note p{ font-size: 14px; line-height: 1.45; } /* texto más cómodo */
+  .photo{ height: 240px; }                        /* foto más grande */
+  .ticket-body strong{ font-size: 16px; }
 }
