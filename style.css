@@ -16,16 +16,16 @@ body{
     #fdecee;
   z-index:-2;
 }
-
 .wrap{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:34px 14px 70px;
+  padding:28px 12px 70px; /* celular/normal */
 }
 
+/* ✅ CELULAR: igual a tu foto (ancho casi completo) */
 .paper{
-  width: min(440px, 92vw);  /* celular y pantallas pequeñas */
+  width: min(520px, 94vw);
   background: rgba(255, 210, 226, .55);
   border: 2px solid rgba(255, 120, 160, .65);
   border-radius: 10px;
@@ -33,20 +33,19 @@ body{
   padding: 14px;
 }
 
-/* ✅ PC / pantallas grandes: que se vea grandote */
+/* ✅ PC: se ve GRANDE como tu primera imagen */
 @media (min-width: 900px){
+  .wrap{
+    padding: 18px 10px 60px; /* menos margen, más “a pantalla” */
+  }
+
   .paper{
-    width: 720px;     /* prueba 680–820 según te guste */
+    width: min(1050px, 92vw); /* grandote tipo Canva */
     padding: 18px;
+    border-radius: 12px;
   }
 }
 
-/* ✅ Pantallas MUY grandes (opcional) */
-@media (min-width: 1200px){
-  .paper{
-    width: 820px;
-  }
-}
 
 .paper-inner{ position:relative; }
 
@@ -464,13 +463,13 @@ body{
   .reasons-grid{ grid-template-columns: 1fr 1fr; }
 }
 @media (min-width: 900px){
-  .logo{ font-size: 52px; }                 /* Valentine Edition arriba */
-  .hero-title .small{ font-size: 14px; }    /* WILL YOU BE MY */
-  .hero-title .big{ font-size: 78px; }      /* Valentine? grandote */
-  .distribution{ font-size: 12px; }
-  .name-script{ font-size: 22px; }
+  .topline, .subline{ font-size:12px; }
+  .logo{ font-size: 56px; }              /* Valentine Edition grande */
+  .hero-title .small{ font-size: 14px; letter-spacing:3px; }
+  .hero-title .big{ font-size: 84px; }   /* Valentine grandote */
 
-  .note p{ font-size: 14px; line-height: 1.45; } /* texto más cómodo */
-  .photo{ height: 240px; }                        /* foto más grande */
+  .note p{ font-size: 14px; line-height: 1.5; }
+  .photo{ height: 260px; }              /* foto más grande */
   .ticket-body strong{ font-size: 16px; }
 }
+
