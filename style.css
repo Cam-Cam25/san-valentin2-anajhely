@@ -197,9 +197,9 @@ body{
 }
 .photo{
   position:relative;
-  height:170px;
-  border-radius:8px;
-  border:1px solid rgba(255,120,160,.25);
+  height: 260px; /* antes 170 */
+  border-radius: 0; 
+  border:2px solid rgba(179,0,58,.55);
   overflow:hidden;
   background:
     radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), transparent 45%),
