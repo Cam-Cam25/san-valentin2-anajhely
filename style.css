@@ -86,21 +86,56 @@ body{
 .hero{
   position:relative;
   margin:10px 0 14px;
+  overflow: hidden; /* para que no se salgan del recuadro */
   padding:18px 10px 12px;
   border-top:1px solid rgba(255,120,160,.35);
   border-bottom:1px solid rgba(255,120,160,.35);
 }
 
-.hero-orn{
+/* Estilo base */
+.cupid{
   position:absolute;
-  width:72px; height:72px;
-  opacity:.22;
-  border:2px solid rgba(179,0,58,.35);
-  border-radius:14px;
-  transform: rotate(8deg);
+  top: 14px;               /* altura desde arriba del hero */
+  width: 140px;            /* tamaño base */
+  height: auto;
+  opacity: .95;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
 }
-.hero-orn.left{ left:6px; top:6px; }
-.hero-orn.right{ right:6px; top:6px; transform: rotate(-8deg); }
+
+/* Izquierdo: pegado al borde izquierdo */
+.cupid-left{
+  left: -18px;             /* negativo para que “salga” un poco */
+  transform: rotate(-2deg);
+}
+
+/* Derecho: pegado al borde derecho */
+.cupid-right{
+  right: -18px;
+  transform: rotate(2deg);
+}
+
+/* En celular: más pequeños y un poquito más arriba */
+@media (max-width: 520px){
+  .cupid{
+    width: 95px;
+    top: 8px;
+    opacity: .9;
+  }
+  .cupid-left{ left: -22px; }
+  .cupid-right{ right: -22px; }
+}
+
+/* En PC: más grandes como Canva */
+@media (min-width: 900px){
+  .cupid{
+    width: 190px;
+    top: 18px;
+  }
+  .cupid-left{ left: -24px; }
+  .cupid-right{ right: -24px; }
+}
 
 .hero-title{
   margin:0;
