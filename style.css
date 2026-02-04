@@ -205,19 +205,19 @@ h1.logo span{
   .diary-text{ font-size: 17px; line-height: 1.42; }
 }
 
-/* ✅ FOTO BONITA Y CONTROLADA (sin recortar) */
+/* CONTENEDOR DE LA FOTO */
 .photo-card{
   display:flex;
   flex-direction:column;
   gap:10px;
 }
 
-/* marco */
+/* MARCO DE LA FOTO */
 .photo-frame{
   width:100%;
   border: 2px solid rgb(239, 32, 42);
   background:#fdecee;
-  padding:8px;
+  padding:6px;                 /* menos padding = más limpio */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -225,24 +225,35 @@ h1.logo span{
   border-radius: 2px;
 }
 
-/* altura controlada */
+/* 📱 CELULAR: foto pequeña */
 @media (max-width:520px){
-  .photo-frame{ height: 210px; }
-}
-@media (min-width:521px){
-  .photo-frame{ height: 260px; }
-}
-@media (min-width:900px){
-  .photo-frame{ height: 340px; }
+  .photo-frame{
+    height: 160px;             /* 🔴 MÁS PEQUEÑA */
+    padding:6px;
+  }
 }
 
-/* imagen sin recorte */
+/* 💻 TABLET */
+@media (min-width:521px){
+  .photo-frame{
+    height: 200px;             /* tamaño medio */
+  }
+}
+
+/* 🖥️ PC GRANDE */
+@media (min-width:900px){
+  .photo-frame{
+    height: 240px;             /* más pequeña que antes */
+  }
+}
+
+/* IMAGEN – NUNCA SE RECORTA */
 .photo-img{
   max-width:100%;
   max-height:100%;
   width:auto;
   height:auto;
-  object-fit:contain;
+  object-fit:contain;          /* ✅ clave: no recorta */
   display:block;
 }
 
