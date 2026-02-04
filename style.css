@@ -1,12 +1,12 @@
 /* RESET */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
-
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:#fdecee;
   color:#7a1730;
+  overflow-x:hidden; /* ✅ evita scroll horizontal por cosas grandes */
 }
 
 /* FONDO */
@@ -20,7 +20,7 @@ body{
   z-index:-2;
 }
 
-/* CONTENEDOR */
+/* LAYOUT */
 .wrap{
   min-height:100vh;
   display:flex;
@@ -28,19 +28,19 @@ body{
   padding:28px 12px 70px;
 }
 
-/* PAPEL */
 .paper{
   width:min(520px, 94vw);
-  background: rgba(255,210,226,.55);
-  border:2px solid rgba(255,120,160,.65);
-  border-radius:10px;
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
-  padding:14px;
+  background: rgba(255, 210, 226, .55);
+  border: 2px solid rgba(255, 120, 160, .65);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  padding: 14px;
 }
 
-@media (min-width:900px){
+@media (min-width: 900px){
+  .wrap{ padding: 18px 10px 60px; }
   .paper{
-    width:min(1050px,92vw);
+    width:min(1050px, 92vw);
     padding:18px;
     border-radius:12px;
   }
@@ -48,47 +48,42 @@ body{
 
 .paper-inner{ position:relative; }
 
-/* PÁGINAS */
 .page{
   display:none;
-  padding:6px 6px 10px;
-  border-radius:8px;
-  background:rgba(255,255,255,.30);
+  padding: 6px 6px 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.30);
   border:1px solid rgba(255,120,160,.25);
 }
 .page.active{ display:block; }
 
 /* HEADER */
 .masthead{ margin-bottom:12px; }
-
 .topline, .subline{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  font-family:'Libre Baskerville', serif;
   font-size:10px;
   letter-spacing:.5px;
   opacity:.85;
 }
+.subline{ margin-top:8px; border-top:1px solid rgba(255,120,160,.35); padding-top:8px; }
 
-.subline{
-  margin-top:8px;
-  border-top:1px solid rgba(255,120,160,.35);
-  padding-top:8px;
-}
-
-/* TÍTULO */
+/* ✅ TITULO QUE NO SE SALE EN CEL */
 h1.logo{
-  font-family:'UnifrakturCook', serif;
-  font-size:clamp(64px, 9vw, 140px);
-  line-height:1.05;
-  letter-spacing:-0.02em;
-  color:rgb(239,32,42);
-  margin:10px 0 12px;
+  font-family: 'UnifrakturCook', serif;
+  color: rgb(239, 32, 42);
+  letter-spacing: -0.02em;
   text-align:center;
+  margin: 10px 0 12px;
+  line-height: 1;
+  font-size: clamp(58px, 14vw, 140px); /* ✅ responsive real */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
-
-.masthead.compact .logo{ display:none; }
+h1.logo span{
+  display:block; /* ✅ fuerza “Edition” abajo en cel */
+}
 
 /* HERO */
 .hero{
@@ -103,133 +98,145 @@ h1.logo{
 /* CUPIDOS */
 .cupid{
   position:absolute;
-  top:16px;
-  width:140px;
-  opacity:.95;
+  top: 14px;
+  width: 140px;
+  height:auto;
+  opacity:.9;
   pointer-events:none;
-  filter:drop-shadow(0 6px 10px rgba(0,0,0,.10));
+  user-select:none;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
 }
-
-.cupid-left{ left:-20px; transform:rotate(-2deg); }
-.cupid-right{ right:-20px; transform:rotate(2deg); }
+.cupid-left{ left: -18px; transform: rotate(-2deg); }
+.cupid-right{ right:-18px; transform: rotate(2deg); }
 
 @media (max-width:520px){
-  .cupid{ width:95px; top:8px; }
+  .cupid{ width: 92px; top: 6px; opacity:.75; }
+  .cupid-left{ left: -22px; }
+  .cupid-right{ right:-22px; }
 }
-
 @media (min-width:900px){
-  .cupid{ width:190px; top:18px; }
+  .cupid{ width: 190px; top: 18px; }
 }
 
 /* HERO TEXTO */
 .hero-title{
+  margin:0;
   text-align:center;
   color:#b3003a;
 }
-
 .hero-title .small{
   display:block;
   font-size:12px;
   letter-spacing:2px;
   margin-bottom:6px;
 }
-
 .hero-title .big{
   display:block;
-  font-family:'Playfair Display', Georgia, serif;
-  font-size:clamp(48px, 6vw, 84px);
-  font-style:italic;
   line-height:1;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(48px, 6vw, 84px);
+  font-style: italic;
 }
 
-/* CENTRO */
 .hero-center{ text-align:center; margin-top:10px; }
-
 .distribution{
+  margin:10px 0 0;
   font-size:11px;
   letter-spacing:.7px;
   opacity:.9;
 }
-
 .name-script{
-  font-family:Georgia, serif;
-  font-style:italic;
+  margin:6px 0 0;
+  font-family: Georgia, serif;
+  font-style: italic;
   font-size:18px;
   color:#c40040;
 }
 
-/* GRID TEXTO + FOTO */
+/* GRID */
 .content-grid{
   display:grid;
-  grid-template-columns:1.25fr .75fr;
+  grid-template-columns: 1.25fr .75fr;
   gap:12px;
   margin-top:12px;
   align-items:start;
 }
 
+/* ✅ CEL: mantiene 2 columnas como tu Canva, pero ajusta */
 @media (max-width:520px){
   .content-grid{
-    grid-template-columns:1.18fr .82fr;
+    grid-template-columns: 1.05fr .95fr;
+    gap:10px;
   }
 }
 
 /* DIARIO */
 .diary{
-  background:transparent;
+  background: transparent;
   border:none;
   padding:0;
 }
-
 .diary-top{
   display:flex;
   align-items:center;
   gap:12px;
-  padding:8px 0 10px;
-  border-top:2px solid rgba(179,0,58,.65);
-  border-bottom:2px solid rgba(179,0,58,.25);
+  padding: 8px 0 10px;
+  margin:0 0 10px;
+  border-top: 2px solid rgba(179,0,58,.65);
+  border-bottom: 2px solid rgba(179,0,58,.25);
 }
-
-.diary-left,
-.diary-right{
-  font-family:Georgia, serif;
-  font-style:italic;
-  font-size:16px;
+.diary-left, .diary-right{
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
   color:#6e0f2a;
 }
+.dot{ opacity:.6; }
 
 .diary-text{
-  font-family:'Playfair Display', serif;
-  font-size:22px;
-  line-height:1.5;
+  margin:0;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  line-height: 1.5;
   color:#6e0f2a;
-  letter-spacing:.5px;
+  letter-spacing: .5px;
 }
-
 @media (max-width:520px){
-  .diary-text{
-    font-size:18px;
-    line-height:1.45;
-  }
+  .diary-text{ font-size: 17px; line-height: 1.42; }
 }
 
-/* FOTO SIN RECORTE */
+/* ✅ FOTO BONITA Y CONTROLADA (sin recortar) */
 .photo-card{
   display:flex;
   flex-direction:column;
   gap:10px;
 }
 
+/* marco */
 .photo-frame{
   width:100%;
-  height:220px;
-  border:2px solid rgb(239,32,42);
+  border: 2px solid rgb(239, 32, 42);
   background:#fdecee;
+  padding:8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:10px;
+  overflow:hidden;
+  border-radius: 2px;
 }
 
+/* altura controlada */
+@media (max-width:520px){
+  .photo-frame{ height: 210px; }
+}
+@media (min-width:521px){
+  .photo-frame{ height: 260px; }
+}
+@media (min-width:900px){
+  .photo-frame{ height: 340px; }
+}
+
+/* imagen sin recorte */
 .photo-img{
   max-width:100%;
   max-height:100%;
@@ -239,30 +246,20 @@ h1.logo{
   display:block;
 }
 
-@media (max-width:520px){
-  .photo-frame{ height:170px; }
-}
-
-@media (min-width:900px){
-  .photo-frame{ height:260px; }
-}
-
 /* BOTÓN ROJO */
 .mini-btn{
   padding:12px;
   border-radius:10px;
-  border:2px solid rgb(239,32,42);
-  background:rgb(239,32,42);
-  color:white;
-  font-weight:900;
-  letter-spacing:.4px;
+  border:2px solid rgb(239, 32, 42);
+  background: rgb(239, 32, 42);
+  color: white;
+  font-weight: 900;
+  letter-spacing: .4px;
   cursor:pointer;
 }
+.mini-btn:hover{ filter: brightness(1.05); }
+.mini-btn:active{ transform: scale(.98); }
 
-.mini-btn:hover{ filter:brightness(1.05); }
-.mini-btn:active{ transform:scale(.98); }
-
-/* FOOTER */
 .footerline{
   margin-top:12px;
   text-align:center;
@@ -277,18 +274,16 @@ h1.logo{
   display:flex;
   gap:12px;
 }
-
 .btn{
   flex:1;
-  padding:12px;
+  padding:12px 10px;
   border-radius:8px;
-  border:2px solid rgba(255,80,120,.75);
-  background:rgba(255,120,160,.55);
+  border: 2px solid rgba(255, 80, 120, .75);
+  background: rgba(255, 120, 160, .55);
   color:#b3003a;
   font-weight:900;
+  letter-spacing:.4px;
   cursor:pointer;
 }
-
-.btn.ghost{ background:rgba(255,255,255,.55); }
+.btn.ghost{ background: rgba(255,255,255,.55); }
 .btn:disabled{ opacity:.45; cursor:not-allowed; }
-
