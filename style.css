@@ -71,7 +71,8 @@ body{
 .subline{ margin-top:8px; border-top:1px solid rgba(255,120,160,.35); padding-top:8px; }
 
 /* TÍTULO PRINCIPAL – Valentine Edition */
-.logo{
+
+h1.logo{
   font-family: 'UnifrakturCook', serif; /* reemplazo real de YAFcflKubjs_0 */
   font-size: 140px;          /* --H97cbQ */
   line-height: 147px;
@@ -81,7 +82,6 @@ body{
   margin: 10px 0 12px;
   text-align: center;
 }
-
 .masthead.compact .logo{ display:none; }
 .masthead.compact{ margin-bottom:4px; }
 
