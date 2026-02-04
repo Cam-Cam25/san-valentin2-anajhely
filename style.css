@@ -1,4 +1,3 @@
-/* RESET */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
@@ -6,10 +5,8 @@ body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:#fdecee;
   color:#7a1730;
-  overflow-x:hidden; /* ✅ evita scroll horizontal por cosas grandes */
 }
 
-/* FONDO */
 .bg{
   position:fixed; inset:0;
   background:
@@ -20,7 +17,6 @@ body{
   z-index:-2;
 }
 
-/* LAYOUT */
 .wrap{
   min-height:100vh;
   display:flex;
@@ -28,8 +24,9 @@ body{
   padding:28px 12px 70px;
 }
 
+/* ✅ CELULAR: ancho casi completo */
 .paper{
-  width:min(520px, 94vw);
+  width: min(520px, 94vw);
   background: rgba(255, 210, 226, .55);
   border: 2px solid rgba(255, 120, 160, .65);
   border-radius: 10px;
@@ -37,12 +34,13 @@ body{
   padding: 14px;
 }
 
+/* ✅ PC: grande tipo Canva */
 @media (min-width: 900px){
   .wrap{ padding: 18px 10px 60px; }
   .paper{
-    width:min(1050px, 92vw);
-    padding:18px;
-    border-radius:12px;
+    width: min(1050px, 92vw);
+    padding: 18px;
+    border-radius: 12px;
   }
 }
 
@@ -57,42 +55,50 @@ body{
 }
 .page.active{ display:block; }
 
-/* HEADER */
 .masthead{ margin-bottom:12px; }
+
 .topline, .subline{
   display:flex;
   justify-content:space-between;
   gap:10px;
+  font-family: 'Libre Baskerville', serif;
   font-size:10px;
   letter-spacing:.5px;
   opacity:.85;
 }
-.subline{ margin-top:8px; border-top:1px solid rgba(255,120,160,.35); padding-top:8px; }
+.subline{
+  margin-top:8px;
+  border-top:1px solid rgba(255,120,160,.35);
+  padding-top:8px;
+}
 
-/* ✅ TITULO QUE NO SE SALE EN CEL */
+/* ✅ TÍTULO: NO SE SALE EN CELULAR (clamp + wrap) */
 h1.logo{
   font-family: 'UnifrakturCook', serif;
-  color: rgb(239, 32, 42);
+  font-size: clamp(56px, 14vw, 140px);
+  line-height: 1.05;
   letter-spacing: -0.02em;
-  text-align:center;
+  color: rgb(239, 32, 42);
   margin: 10px 0 12px;
-  line-height: 1;
-  font-size: clamp(58px, 14vw, 140px); /* ✅ responsive real */
-  word-break: keep-all;
+  text-align:center;
+
+  /* claves para evitar overflow en móvil */
+  max-width: 100%;
   overflow-wrap: anywhere;
-}
-h1.logo span{
-  display:block; /* ✅ fuerza “Edition” abajo en cel */
+  word-break: break-word;
 }
 
-/* HERO */
+/* HEADER COMPACT */
+.masthead.compact .logo{ display:none; }
+.masthead.compact{ margin-bottom:4px; }
+
 .hero{
   position:relative;
   margin:10px 0 14px;
+  overflow:hidden;
   padding:18px 10px 12px;
   border-top:1px solid rgba(255,120,160,.35);
   border-bottom:1px solid rgba(255,120,160,.35);
-  overflow:hidden;
 }
 
 /* CUPIDOS */
@@ -100,42 +106,44 @@ h1.logo span{
   position:absolute;
   top: 14px;
   width: 140px;
-  height:auto;
-  opacity:.9;
-  pointer-events:none;
-  user-select:none;
+  height: auto;
+  opacity: .95;
+  pointer-events: none;
+  user-select: none;
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
 }
 .cupid-left{ left: -18px; transform: rotate(-2deg); }
-.cupid-right{ right:-18px; transform: rotate(2deg); }
+.cupid-right{ right: -18px; transform: rotate(2deg); }
 
-@media (max-width:520px){
-  .cupid{ width: 92px; top: 6px; opacity:.75; }
+@media (max-width: 520px){
+  .cupid{ width: 95px; top: 8px; opacity: .9; }
   .cupid-left{ left: -22px; }
-  .cupid-right{ right:-22px; }
+  .cupid-right{ right: -22px; }
 }
-@media (min-width:900px){
+@media (min-width: 900px){
   .cupid{ width: 190px; top: 18px; }
+  .cupid-left{ left: -24px; }
+  .cupid-right{ right: -24px; }
 }
 
-/* HERO TEXTO */
-.hero-title{
-  margin:0;
-  text-align:center;
-  color:#b3003a;
-}
+.hero-title{ margin:0; text-align:center; color:#b3003a; }
+
 .hero-title .small{
   display:block;
+  font-family: 'Libre Baskerville', serif;
   font-size:12px;
   letter-spacing:2px;
   margin-bottom:6px;
+  color:#b3003a;
 }
+
 .hero-title .big{
   display:block;
   line-height:1;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(48px, 6vw, 84px);
+  font-size: clamp(48px, 9vw, 84px);
   font-style: italic;
+  color:#b3003a;
 }
 
 .hero-center{ text-align:center; margin-top:10px; }
@@ -147,46 +155,41 @@ h1.logo span{
 }
 .name-script{
   margin:6px 0 0;
-  font-family: Georgia, serif;
+  font-family: "Playfair Display", serif;
   font-style: italic;
   font-size:18px;
   color:#c40040;
 }
 
-/* GRID */
+/* GRID diario + foto (igual en cel y compu, no se pasa a 1 columna) */
 .content-grid{
   display:grid;
-  grid-template-columns: 1.25fr .75fr;
+  grid-template-columns: 1.18fr .82fr;
   gap:12px;
   margin-top:12px;
   align-items:start;
 }
-
-/* ✅ CEL: mantiene 2 columnas como tu Canva, pero ajusta */
-@media (max-width:520px){
-  .content-grid{
-    grid-template-columns: 1.05fr .95fr;
-    gap:10px;
-  }
+@media (max-width: 520px){
+  .content-grid{ gap: 10px; }
 }
 
-/* DIARIO */
+/* Diario sin tarjeta blanca */
 .diary{
   background: transparent;
-  border:none;
-  padding:0;
+  border: none;
+  padding: 0;
 }
 .diary-top{
   display:flex;
   align-items:center;
   gap:12px;
   padding: 8px 0 10px;
-  margin:0 0 10px;
-  border-top: 2px solid rgba(179,0,58,.65);
-  border-bottom: 2px solid rgba(179,0,58,.25);
+  margin: 0 0 10px;
+  border-top: 2px solid rgba(239,32,42,.75);
+  border-bottom: 2px solid rgba(239,32,42,.25);
 }
 .diary-left, .diary-right{
-  font-family: Georgia, serif;
+  font-family: "Playfair Display", serif;
   font-style: italic;
   font-size: 16px;
   color:#6e0f2a;
@@ -201,75 +204,117 @@ h1.logo span{
   color:#6e0f2a;
   letter-spacing: .5px;
 }
-@media (max-width:520px){
-  .diary-text{ font-size: 17px; line-height: 1.42; }
+@media (max-width: 520px){
+  .diary-text{ font-size: 18px; line-height: 1.45; }
 }
 
-/* CONTENEDOR DE LA FOTO */
+/* Foto card */
 .photo-card{
   display:flex;
   flex-direction:column;
   gap:10px;
 }
 
-/* MARCO DE LA FOTO */
+/* Love tag */
+.caption{
+  display:flex; justify-content:flex-end;
+  font-size:11px; opacity:.85;
+}
+.tag{ border-bottom:1px dotted rgba(179,0,58,.4); }
+
+/* ✅ FOTO: SIN RECORTE + MÁS PEQUEÑA (solo CSS) */
 .photo-frame{
   width:100%;
-  border: 2px solid rgb(239, 32, 42);
+  border:2px solid rgb(239, 32, 42);
   background:#fdecee;
-  padding:6px;                 /* menos padding = más limpio */
+  overflow:hidden;
+
+  /* controla tamaño de la foto */
+  height: 260px;                 /* base */
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
-  border-radius: 2px;
 }
 
-/* 📱 CELULAR: foto pequeña */
-@media (max-width:520px){
-  .photo-frame{
-    height: 160px;             /* 🔴 MÁS PEQUEÑA */
-    padding:6px;
-  }
-}
-
-/* 💻 TABLET */
-@media (min-width:521px){
-  .photo-frame{
-    height: 200px;             /* tamaño medio */
-  }
-}
-
-/* 🖥️ PC GRANDE */
-@media (min-width:900px){
-  .photo-frame{
-    height: 240px;             /* más pequeña que antes */
-  }
-}
-
-/* IMAGEN – NUNCA SE RECORTA */
+/* ✅ CLAVE: contain para NO recortar */
 .photo-img{
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-  object-fit:contain;          /* ✅ clave: no recorta */
+  width:100%;
+  height:100%;
+  object-fit: contain;            /* NO recorta */
   display:block;
 }
 
-/* BOTÓN ROJO */
+/* Tamaños responsivos para que no se vea gigante */
+@media (max-width: 520px){
+  .photo-frame{ height: 210px; }  /* más chica en cel */
+}
+@media (min-width: 900px){
+  .photo-frame{ height: 320px; }  /* más grande en PC, pero controlado */
+}
+
+/* Banner (imagen horizontal) */
+.banner-frame{
+  width:100%;
+  border:2px solid rgba(239, 32, 42, .65);
+  background:#fdecee;
+  overflow:hidden;
+
+  height: 92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.banner-img{
+  width:100%;
+  height:100%;
+  object-fit: cover; /* banner sí puede cubrir */
+  display:block;
+}
+@media (max-width: 520px){
+  .banner-frame{ height: 80px; }
+}
+@media (min-width: 900px){
+  .banner-frame{ height: 110px; }
+}
+
+/* Botón */
 .mini-btn{
-  padding:12px;
+  padding:10px;
   border-radius:10px;
-  border:2px solid rgb(239, 32, 42);
+  border:2px solid rgba(255,80,120,.7);
+  background: rgba(255,255,255,.55);
+  color:#b3003a;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* ✅ Botón rojo como "siguiente" */
+.mini-btn.danger{
   background: rgb(239, 32, 42);
+  border-color: rgb(239, 32, 42);
   color: white;
   font-weight: 900;
   letter-spacing: .4px;
-  cursor:pointer;
 }
-.mini-btn:hover{ filter: brightness(1.05); }
-.mini-btn:active{ transform: scale(.98); }
+.mini-btn.danger:hover{ filter: brightness(1.05); }
+.mini-btn.danger:active{ transform: scale(.98); }
+
+.tickets{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin-top:14px;
+}
+.ticket{
+  position:relative;
+  background: rgba(255,120,160,.20);
+  border:2px dashed rgba(179,0,58,.45);
+  border-radius:10px;
+  padding:12px 12px 12px 36px;
+}
+.ticket .cut{ position:absolute; left:10px; top:10px; opacity:.8; }
+.ticket-body small{ display:block; font-size:10px; letter-spacing:.8px; opacity:.85; }
+.ticket-body strong{ display:block; margin-top:4px; font-size:13px; }
 
 .footerline{
   margin-top:12px;
@@ -279,11 +324,145 @@ h1.logo span{
   opacity:.8;
 }
 
+/* PAGE 2 */
+.title-big{
+  margin:10px 0 14px;
+  text-align:center;
+  color:#b3003a;
+  font-family:"Playfair Display", serif;
+  font-size:28px;
+  line-height:1.05;
+}
+.title-big span{ font-family:inherit; font-size:16px; opacity:.9; }
+.title-big em{ font-style:italic; font-size:28px; }
+
+.reasons-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:10px;
+  border-top:1px solid rgba(255,120,160,.35);
+  padding-top:12px;
+}
+.cell{
+  background: rgba(255,255,255,.45);
+  border:1px solid rgba(255,120,160,.25);
+  border-radius:10px;
+  padding:10px;
+  min-height:90px;
+  position:relative;
+}
+.cell p{ margin:18px 0 0; font-size:12px; line-height:1.25; }
+.num{ position:absolute; left:10px; top:8px; font-weight:900; color:#b3003a; }
+.cell.center{ display:flex; align-items:center; justify-content:center; }
+.heart-big{ font-size:36px; color:#d1003f; filter: drop-shadow(0 6px 12px rgba(0,0,0,.10)); }
+
+.signals{ margin-top:14px; text-align:center; }
+.signals h3{ margin:0; font-size:11px; letter-spacing:2px; opacity:.85; }
+.signals h2{ margin:4px 0 4px; font-family:"Playfair Display", serif; font-size:24px; color:#b3003a; }
+.tiny{ margin:0 0 10px; font-size:11px; opacity:.85; }
+
+.signals-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; }
+.signal{
+  background: rgba(209,0,63,.75);
+  color:white;
+  border-radius:10px;
+  padding:10px;
+  font-size:11px;
+  line-height:1.25;
+}
+
+/* PAGE 3 */
+.question-title{
+  margin:12px 0 6px;
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size:26px;
+  color:#b3003a;
+}
+.question-text{ text-align:center; font-size:12px; line-height:1.35; margin:10px 0 10px; }
+.question-text p{ margin:6px 0; opacity:.95; }
+
+.big-ask{
+  margin:16px 0 14px;
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size:34px;
+  color:#6e0f2a;
+}
+.big-ask span{ font-style:italic; color:#b3003a; }
+
+.choose{ text-align:center; margin:0 0 10px; font-size:12px; opacity:.9; }
+.choices{ display:flex; flex-direction:column; gap:10px; padding:0 10px 8px; }
+
+.choice{
+  padding:12px 12px;
+  border-radius:999px;
+  border:2px solid rgba(255,80,120,.75);
+  background: rgba(255,120,160,.55);
+  color:#b3003a;
+  font-weight:900;
+  cursor:pointer;
+  transition: transform .06s ease, filter .2s ease;
+}
+.choice:hover{ filter:brightness(1.05); }
+.choice:active{ transform:scale(.99); }
+.choice.ghost{ background: rgba(255,255,255,.60); }
+
+/* PAGE 4 */
+.page.confirmed{
+  background: linear-gradient(180deg, #d42a3a, #c0142e);
+  border-color: rgba(255,255,255,.15);
+  color: #fff6f8;
+}
+.confirmed-inner{ padding:26px 10px 22px; text-align:center; }
+.confirmed-inner h2{ margin:0 0 18px; font-family:"Playfair Display", serif; letter-spacing:.4px; }
+
+.lace-heart{
+  margin: 0 auto 16px;
+  width: 210px;
+  height: 170px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.lace-border{
+  position:absolute; inset:0;
+  border-radius: 60% 60% 70% 70% / 70% 70% 55% 55%;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+.lace-border::before{
+  content:"";
+  position:absolute; inset:10px;
+  border-radius: inherit;
+  border: 3px dotted rgba(212,42,58,.45);
+}
+.lace-text{ position:relative; z-index:1; color:#c0142e; padding: 0 18px; }
+.script{ font-family:"Playfair Display", serif; font-style: italic; font-size:18px; margin:0; }
+
+.mini-hearts{
+  position:absolute; right:18px; bottom:16px;
+  display:flex; gap:8px;
+  z-index:2;
+}
+.mini{
+  width:34px; height:34px;
+  border-radius: 12px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,.95);
+  color:#c0142e;
+  font-weight:900;
+  box-shadow: 0 8px 16px rgba(0,0,0,.12);
+}
+.confirmed-msg{ margin:14px 0 18px; font-size:12px; line-height:1.45; opacity:.95; }
+
 /* NAV */
 .nav{
   margin-top:12px;
   display:flex;
   gap:12px;
+  justify-content:space-between;
 }
 .btn{
   flex:1;
