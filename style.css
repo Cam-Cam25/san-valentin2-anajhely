@@ -230,7 +230,7 @@ h1.logo{
   overflow:hidden;
 
   /* controla tamaño de la foto */
-  height: 260px;                 /* base */
+  height: 180px;                /* base */
   display:flex;
   align-items:center;
   justify-content:center;
