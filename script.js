@@ -9,7 +9,6 @@ function show(i){
   current = i;
   pages[current].classList.add("active");
 
-  // botones
   prevBtn.disabled = current === 0;
   nextBtn.textContent = (current === pages.length - 1) ? "VOLVER AL INICIO" : "PAG. SIGUIENTE";
 
@@ -25,7 +24,6 @@ nextBtn.addEventListener("click", () => {
   else show(current + 1);
 });
 
-// Botones internos (ir a página específica / confirmar)
 document.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-goto], [data-confirm]");
   if(!btn) return;
@@ -39,10 +37,8 @@ document.addEventListener("click", (e) => {
   }
 
   if(confirm){
-    // Página 4 = Confirmado
     show(3);
   }
 });
 
-// iniciar
 show(0);
