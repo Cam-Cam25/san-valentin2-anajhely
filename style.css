@@ -243,6 +243,22 @@ h1.logo{
     radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), transparent 45%),
     linear-gradient(135deg, rgba(120,180,120,.35), rgba(40,120,60,.35));
 }
+/* FOTO REAL – reemplaza el placeholder */
+.photo-frame{
+  width:100%;
+  height:300px;
+  border:2px solid rgb(239, 32, 42);
+  background:#fdecee;
+  position:relative;
+  overflow:hidden;
+}
+
+.photo-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .sparkles::before, .sparkles::after{
   content:"✦";
   position:absolute;
@@ -277,6 +293,22 @@ h1.logo{
   color:#b3003a;
   font-weight:800;
   cursor:pointer;
+}
+/* BOTÓN ROJO – mismo color que PAG. SIGUIENTE */
+.mini-btn.danger{
+  background: rgb(239, 32, 42);
+  border-color: rgb(239, 32, 42);
+  color: white;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+.mini-btn.danger:hover{
+  filter: brightness(1.05);
+}
+
+.mini-btn.danger:active{
+  transform: scale(.98);
 }
 
 .tickets{
@@ -533,10 +565,28 @@ h1.logo{
 .btn.ghost{ background: rgba(255,255,255,.55); }
 .btn:disabled{ opacity:.45; cursor:not-allowed; }
 
-@media (max-width: 420px){
-  .content-grid{ grid-template-columns: 1fr; }
-  .signals-grid{ grid-template-columns: 1fr; }
-  .reasons-grid{ grid-template-columns: 1fr 1fr; }
+@media (max-width: 520px){
+  /* NO lo pases a 1 columna: lo queremos igual que Canva */
+  .content-grid{
+    grid-template-columns: 1.18fr .82fr;
+    gap: 10px;
+  }
+
+  /* texto un poquito más pequeño en celular, pero mismo diseño */
+  .diary-text{
+    font-size: 18px;
+    line-height: 1.45;
+  }
+    .photo-frame{
+    height:220px;
+  }
+}
+.content-grid{
+  display:grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap:12px;
+  margin-top:12px;
+  align-items:start;
 }
 @media (min-width: 900px){
   .topline, .subline{ font-size:12px; }
