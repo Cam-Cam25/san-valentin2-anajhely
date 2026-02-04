@@ -48,10 +48,10 @@ body{
 
 .page{
   display:none;
-  padding: 6px 6px 10px;
-  border-radius: 8px;
-  background: rgba(255,255,255,.30);
-  border:1px solid rgba(255,120,160,.25);
+  padding: 0;              /* ✅ sin “tarjeta” interna */
+  border-radius: 0;
+  background: transparent;  /* ✅ deja que el fondo del .paper sea el real */
+  border: none;
 }
 .page.active{ display:block; }
 
@@ -222,34 +222,23 @@ h1.logo{
 }
 .tag{ border-bottom:1px dotted rgba(179,0,58,.4); }
 
-/* ✅ FOTO: SIN RECORTE + MÁS PEQUEÑA (solo CSS) */
+/* ✅ FOTO tipo Canva: SIEMPRE cuadrada y estable */
 .photo-frame{
   width:100%;
+  aspect-ratio: 1 / 1;                 /* ✅ clave: forma cuadrada */
   border:2px solid rgb(239, 32, 42);
   background:#fdecee;
   overflow:hidden;
-
-  /* controla tamaño de la foto */
-  height: 180px;                /* base */
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:block;                        /* ✅ evita comportamientos raros */
 }
 
-/* ✅ CLAVE: contain para NO recortar */
+/* ✅ Canva style: llena el cuadro (recorta un poco, se ve pro) */
 .photo-img{
   width:100%;
   height:100%;
-  object-fit: contain;            /* NO recorta */
+  object-fit: cover;                    /* ✅ como Canva */
+  object-position: center;              /* ✅ centrada */
   display:block;
-}
-
-/* Tamaños responsivos para que no se vea gigante */
-@media (max-width: 520px){
-  .photo-frame{ height: 210px; }  /* más chica en cel */
-}
-@media (min-width: 900px){
-  .photo-frame{ height: 320px; }  /* más grande en PC, pero controlado */
 }
 
 /* Banner (imagen horizontal) */
@@ -477,3 +466,18 @@ h1.logo{
 }
 .btn.ghost{ background: rgba(255,255,255,.55); }
 .btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+@media (max-width: 520px){
+  /* un pelín más de aire y proporción como Canva */
+  .content-grid{
+    grid-template-columns: 1.05fr .95fr; /* ✅ columna de foto un poquito más ancha */
+    gap: 10px;
+  }
+
+  /* botón más compacto como en la referencia */
+  .mini-btn{
+    padding: 10px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+  }
+}
