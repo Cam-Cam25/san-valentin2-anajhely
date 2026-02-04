@@ -223,23 +223,34 @@ h1.logo{
 .tag{ border-bottom:1px dotted rgba(179,0,58,.4); }
 
 /* ✅ FOTO tipo Canva: SIEMPRE cuadrada y estable */
+/* ✅ FOTO como Canva: el cuadro mantiene forma y la imagen lo llena */
 .photo-frame{
   width:100%;
-  aspect-ratio: 1 / 1;                 /* ✅ clave: forma cuadrada */
   border:2px solid rgb(239, 32, 42);
   background:#fdecee;
   overflow:hidden;
-  display:block;                        /* ✅ evita comportamientos raros */
+
+  /* esto hace que SIEMPRE tenga forma bonita */
+  aspect-ratio: 1 / 1;           /* cuadrado tipo Canva */
+  border-radius: 0;
 }
 
-/* ✅ Canva style: llena el cuadro (recorta un poco, se ve pro) */
+/* ✅ Llena el cuadro (sin espacios vacíos) */
 .photo-img{
   width:100%;
   height:100%;
-  object-fit: cover;                    /* ✅ como Canva */
-  object-position: center;              /* ✅ centrada */
   display:block;
+  object-fit: cover;              /* CLAVE: llena el marco */
+  object-position: center;        /* centra la foto */
 }
+
+/* En celu: un poquito más alto para que se parezca más a tu referencia */
+@media (max-width: 520px){
+  .photo-frame{
+    aspect-ratio: 4 / 5;          /* un poco más vertical en celular */
+  }
+}
+
 
 /* Banner (imagen horizontal) */
 .banner-frame{
