@@ -137,9 +137,47 @@ body{
 
 .content-grid{
   display:grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: 1.25fr .75fr; /* ✅ texto más ancho, foto más angosta */
   gap:12px;
   margin-top:12px;
+}
+
+/* --- PAGE 1: Texto como en la captura (sin tarjeta blanca) --- */
+.diary{
+  background: transparent;     /* ✅ nada de caja blanca */
+  border: none;
+  padding: 0;
+}
+
+.diary-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding: 8px 0 10px;
+  margin: 0 0 10px;
+  border-top: 2px solid rgba(179,0,58,.65);   /* línea como en la imagen */
+  border-bottom: 2px solid rgba(179,0,58,.25);
+}
+
+.diary-left,
+.diary-right{
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 16px;
+  color:#6e0f2a;
+}
+
+.dot{
+  opacity:.6;
+}
+
+.diary-text{
+  margin:0;
+  font-family: "Georgia", "Times New Roman", serif;  /* más “revista” */
+  font-size: 22px;        /* ✅ grande como tu captura */
+  line-height: 1.45;
+  letter-spacing: .5px;
+  color:#6e0f2a;
 }
 
 .note{
