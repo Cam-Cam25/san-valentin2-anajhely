@@ -70,14 +70,16 @@ body{
 }
 .subline{ margin-top:8px; border-top:1px solid rgba(255,120,160,.35); padding-top:8px; }
 
+/* TÍTULO PRINCIPAL – Valentine Edition */
 .logo{
-  margin:10px 0 0;
-  text-align:center;
-  font-family: 'UnifrakturCook', Georgia, serif;
-  font-size: 56px;
-  letter-spacing: 2px;
-  color:#b3003a;
-  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  font-family: 'UnifrakturCook', serif; /* reemplazo real de YAFcflKubjs_0 */
+  font-size: 140px;          /* --H97cbQ */
+  line-height: 147px;
+  letter-spacing: -0.02em;
+  color: rgb(239, 32, 42);
+  text-transform: none;
+  margin: 10px 0 12px;
+  text-align: center;
 }
 
 .masthead.compact .logo{ display:none; }
