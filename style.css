@@ -17,6 +17,22 @@ body{
     #fdecee;
   z-index:-1;
 }
+/* =========================
+   GIF DE FONDO (SIEMPRE ATRÁS)
+   ========================= */
+
+.gif-bg{
+  position: fixed;
+  inset: 0;
+  background-image: url("./img/FLOR.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.18; /* 👈 para que se vea suave */
+  z-index: -2;   /* 👈 más atrás que todo */
+  pointer-events: none;
+}
 
 /* Centro como en tu captura (mucho aire alrededor) */
 .wrap{
