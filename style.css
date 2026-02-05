@@ -249,3 +249,13 @@ body{
   .signals-grid{ grid-template-columns: 1fr; }
   .sig{ font-size: 10px; }
 }
+/* 🔥 FIX: fuerza el 3x3 aunque haya CSS viejo chocando */
+.grid9{
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+.grid9 .cell{
+  width: auto !important;
+  min-width: 0 !important;
+}
