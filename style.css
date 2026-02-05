@@ -1,5 +1,9 @@
+/* =========================
+   BASE
+   ========================= */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
+
 body{
   margin:0;
   color:#7a1730;
@@ -7,21 +11,23 @@ body{
   background-color: rgb(255, 245, 239);
 }
 
-/* Fondo suave */
+/* =========================
+   FONDO SUAVE
+   ========================= */
 .bg{
-  position:fixed; inset:0;
+  position:fixed;
+  inset:0;
   background:
     radial-gradient(circle at 20% 25%, rgba(255,80,140,.12), transparent 45%),
     radial-gradient(circle at 80% 35%, rgba(255,160,210,.16), transparent 45%),
     radial-gradient(circle at 35% 85%, rgba(255,120,170,.10), transparent 55%),
     rgb(255, 245, 239);
-  z-index:-1;
+  z-index:-3;
 }
 
 /* =========================
    GIF DE FONDO (SIEMPRE ATRÁS)
    ========================= */
-
 .gif-bg{
   position: fixed;
   inset: 0;
@@ -31,10 +37,14 @@ body{
 
   opacity: 0.35;
   mix-blend-mode: screen;
+
+  z-index: -2; /* 🔥 clave */
   pointer-events: none;
 }
 
-/* Centro como en tu captura (mucho aire alrededor) */
+/* =========================
+   CENTRADO
+   ========================= */
 .wrap{
   min-height:100vh;
   display:flex;
@@ -43,14 +53,19 @@ body{
   padding: 28px 12px;
 }
 
-/* Papel */
+/* =========================
+   PAPEL
+   ========================= */
 .paper{
-  width: min(520px, 92vw); /* 👈 MÁS ANCHO */
+  width: min(520px, 92vw);
   background: rgba(255, 210, 226, .55);
   border: 2px solid rgba(255, 120, 160, .70);
   border-radius: 10px;
   box-shadow: 0 12px 35px rgba(0,0,0,.12);
   padding: 14px;
+
+  position: relative;
+  z-index: 2; /* 🔥 encima del gif */
 }
 
 .paper-inner{
@@ -58,20 +73,19 @@ body{
   border-radius: 8px;
   background: rgba(255,255,255,.28);
   padding: 12px 12px 14px;
+
+  overflow: hidden; /* 🔥 clave para páginas */
 }
 
-/* Masthead */
 /* =========================
    MASTHEAD (ESTILO PERIÓDICO)
    ========================= */
-
 .masthead{
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid rgb(239, 32, 42); /* línea roja fuerte */
+  border-bottom: 2px solid rgb(239, 32, 42);
 }
 
-/* Línea doble como en la primera imagen */
 .masthead::before{
   content:"";
   display:block;
@@ -79,6 +93,7 @@ body{
   background: rgb(239, 32, 42);
   margin-bottom: 8px;
 }
+
 .masthead::after{
   content:"";
   display:block;
@@ -87,7 +102,6 @@ body{
   margin-top: 8px;
 }
 
-/* Texto */
 .topline, .subline{
   display:flex;
   justify-content:space-between;
@@ -98,28 +112,19 @@ body{
   opacity:.95;
 }
 
-/* La segunda fila NO lleva border-top ya */
 .subline{
   margin-top: 10px;
   padding-top: 0;
   border-top: none;
 }
 
-@media (min-width: 900px){
-  .paper{
-    width: 560px; /* look revista */
-  }
-}
-
-/* Título */
-/* ✅ Título EXACTO estilo Canva (como tu captura) */
 /* =========================
-   COVER (05 Razones...)
+   TITULO (COVER)
    ========================= */
 .cover{
   position: relative;
   padding: 26px 10px 16px;
-  overflow: hidden; /* clave: nada se sale del recuadro */
+  overflow: hidden;
 }
 
 .cover-title{
@@ -129,7 +134,7 @@ body{
   max-width: 100%;
 }
 
-/* ÁNGELES */
+/* Ángeles */
 .angel{
   position: absolute;
   top: 10px;
@@ -142,7 +147,7 @@ body{
 .angel-left{ left: -20px; }
 .angel-right{ right: -20px; }
 
-/* Tipografía principal (serif fuerte, como tu referencia) */
+/* Tipografía */
 .cover-05{
   font-family: "Playfair Display", serif;
   font-weight: 600;
@@ -151,6 +156,7 @@ body{
   font-size: clamp(64px, 7vw, 110px);
   margin-bottom: 6px;
 }
+
 .cover-razones{
   font-family: "Playfair Display", serif;
   font-weight: 700;
@@ -161,11 +167,15 @@ body{
 }
 
 .cover-por{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: rgb(239, 32, 42);
+  line-height: 1.02;
+  font-size: clamp(30px, 4.6vw, 64px);
   margin-top: 4px;
-  white-space: nowrap; /* 👈 CLAVE */
+  white-space: nowrap;
 }
 
-/* Script elegante (la parte “Mi elección Perfecta”) */
 .cover-script{
   margin-top: 6px;
   font-family: "Playfair Display", serif;
@@ -188,29 +198,19 @@ body{
   pointer-events: none;
 }
 
-/* ✅ AJUSTE FINO SOLO EN PC: evita que se vea gigante */
-@media (min-width: 900px){
-  .cover{ padding: 30px 30px 22px; }
-
-  /* importante: en PC tu papel es más ancho, así que centramos y no permitimos “texto descontrolado” */
-  .cover-title{
-    margin: 0 auto;
-    max-width: 900px;
-  }
-
-  .angel-left{ left: -30px; }
-  .angel-right{ right: -30px; }
-}
-
-/* Grid 3x3 con líneas */
+/* =========================
+   GRID 3x3
+   ========================= */
 .grid9{
   margin-top: 8px;
   border: 1px solid rgba(239,32,42,.45);
   border-radius: 6px;
   overflow:hidden;
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
 }
+
 .cell{
   min-height: 92px;
   padding: 10px 10px;
@@ -219,6 +219,7 @@ body{
   border-right: 1px solid rgba(239,32,42,.35);
   border-bottom: 1px solid rgba(239,32,42,.35);
 }
+
 .cell:nth-child(3n){ border-right: none; }
 .cell:nth-last-child(-n+3){ border-bottom: none; }
 
@@ -229,6 +230,7 @@ body{
   line-height: 1.25;
   color:#b3003a;
 }
+
 .num{
   position:absolute;
   top: 8px; left: 8px;
@@ -237,6 +239,7 @@ body{
   font-family: "Libre Baskerville", serif;
   font-size: 14px;
 }
+
 .num.center{ left: 50%; transform: translateX(-50%); }
 
 .mid{
@@ -245,18 +248,20 @@ body{
   justify-content:center;
   background: rgba(255, 220, 232, .20);
 }
+
 .heart.big{
   font-size: 26px;
   color: rgb(239, 32, 42);
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
 }
 
-/* Corazones con letras A / J */
+/* Corazones con letras */
 .badge{
   display:flex;
   align-items:center;
   justify-content:center;
 }
+
 .badge-heart{
   width: 42px;
   height: 38px;
@@ -267,6 +272,7 @@ body{
   justify-content:center;
   box-shadow: 0 10px 20px rgba(0,0,0,.12);
 }
+
 .badge-heart span{
   color:#fff;
   font-weight:900;
@@ -274,13 +280,17 @@ body{
   transform: translateY(-1px);
 }
 
-/* Señales */
+/* =========================
+   SEÑALES
+   ========================= */
 .signals{
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid rgba(239,32,42,.35);
 }
+
 .signals-top{ text-align:center; }
+
 .kicker{
   margin:0;
   font-size: 9px;
@@ -288,6 +298,7 @@ body{
   opacity:.85;
   font-family:"Libre Baskerville", serif;
 }
+
 .signals h2{
   margin: 4px 0 2px;
   font-family:"Playfair Display", serif;
@@ -295,6 +306,7 @@ body{
   color: rgb(239, 32, 42);
   font-size: 18px;
 }
+
 .tiny{
   margin:0 0 10px;
   font-size: 10px;
@@ -305,13 +317,14 @@ body{
 /* 3 tarjetas rojas */
 .signals-grid{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
+
 .sig{
   background: rgb(239, 32, 42);
   color:#fff;
-  border-radius: 14px;          /* cuadraditas como tu foto */
+  border-radius: 14px;
   padding: 10px 8px;
   font-size: 9px;
   line-height: 1.2;
@@ -319,7 +332,9 @@ body{
   text-align:center;
 }
 
-/* Footer */
+/* =========================
+   FOOTER
+   ========================= */
 .footerline{
   margin-top: 10px;
   text-align:center;
@@ -329,13 +344,16 @@ body{
   font-family:"Libre Baskerville", serif;
 }
 
-/* Botones abajo */
+/* =========================
+   BOTONES
+   ========================= */
 .nav{
   margin-top: 10px;
   display:flex;
   justify-content:space-between;
   gap: 10px;
 }
+
 .btn{
   flex:1;
   padding: 10px 10px;
@@ -350,30 +368,61 @@ body{
   font-size: 10px;
   text-decoration: underline;
 }
+
 .btn.ghost{
   background: rgba(255,255,255,.35);
 }
 
-/* Móvil: que no se encoja feo */
-@media (max-width: 420px){
-  .paper{ width: 94vw; }
-  .signals-grid{ grid-template-columns: 1fr; }
-  .sig{ font-size: 10px; }
+/* =========================
+   PAGINAS COMO HOJAS REALES
+   ========================= */
+.page{
+  display: none;
+  min-height: 760px;
+  animation: pageIn .35s ease;
 }
-/* 🔥 FIX: fuerza el 3x3 aunque haya CSS viejo chocando */
-.grid9{
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 0 !important;
+
+.page.active{
+  display: block;
 }
-.grid9 .cell{
-  width: auto !important;
-  min-width: 0 !important;
+
+@keyframes pageIn{
+  from{
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* =========================
+   TITULO PAGINA CUPONES
+   ========================= */
+.page-title{
+  text-align: left;
+  margin: 18px 0 12px;
+}
+
+.page-title h1{
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: #7a1730;
+}
+
+.page-title p{
+  margin: 6px 0 0;
+  font-family: "Libre Baskerville", serif;
+  font-size: 12px;
+  opacity: .9;
+}
+
 /* =========================
    CUPONES (CSS PURO)
    ========================= */
-
 .coupon-area{
   margin-top: 14px;
 }
@@ -499,6 +548,8 @@ body{
   align-items:center;
   text-align:center;
   padding: 14px 10px;
+
+  position: relative;
 }
 
 /* Huecos semicirculares */
@@ -510,15 +561,11 @@ body{
   height: 18px;
   background: rgb(255, 245, 239);
   border-radius: 50%;
-  left: 83px;
+  left: -20px;
 }
 
-.ticket-body::before{
-  top: 10px;
-}
-.ticket-body::after{
-  bottom: 10px;
-}
+.ticket-body::before{ top: 8px; }
+.ticket-body::after{ bottom: 8px; }
 
 /* Texto */
 .ticket-label{
@@ -538,9 +585,19 @@ body{
   color: rgb(239, 32, 42);
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 520px){
-  .tickets{
-    grid-template-columns: 1fr;
-  }
+  .tickets{ grid-template-columns: 1fr; }
 }
+
+/* Ajuste PC */
+@media (min-width: 900px){
+  .paper{ width: 560px; }
+  .cover{ padding: 30px 30px 22px; }
+  .cover-title{ margin: 0 auto; max-width: 900px; }
+  .angel-left{ left: -30px; }
+  .angel-right{ right: -30px; }
+}
+
