@@ -60,6 +60,11 @@ body{
   padding-top: 8px;
   border-top: 1px solid rgba(255,120,160,.35);
 }
+@media (min-width: 900px){
+  .paper{
+    width: 560px; /* look revista */
+  }
+}
 
 /* Título */
 /* ✅ Título EXACTO estilo Canva (como tu captura) */
@@ -101,22 +106,18 @@ body{
   font-size: clamp(64px, 7vw, 110px);
   margin-bottom: 6px;
 }
-
 .cover-razones{
   font-family: "Playfair Display", serif;
-  font-weight: 600;
+  font-weight: 700;
   color: rgb(239, 32, 42);
   line-height: .95;
-  font-size: clamp(56px, 7.5vw, 120px);
+  font-size: clamp(64px, 8vw, 120px);
+  margin-top: -6px;
 }
 
-.cover-por,
-.cover-que{
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  color: rgb(239, 32, 42);
-  line-height: 1.02;
-  font-size: clamp(34px, 4.6vw, 74px);
+.cover-por{
+  margin-top: 4px;
+  white-space: nowrap; /* 👈 CLAVE */
 }
 
 /* Script elegante (la parte “Mi elección Perfecta”) */
