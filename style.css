@@ -24,13 +24,14 @@ body{
 .gif-bg{
   position: fixed;
   inset: 0;
-  background-image: url("./img/FLOR.gif");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-  opacity: 0.18; /* 👈 para que se vea suave */
-  z-index: -2;   /* 👈 más atrás que todo */
+  opacity: 0.35;
+  mix-blend-mode: screen;
+
+  z-index: -2;
   pointer-events: none;
 }
 
@@ -61,21 +62,50 @@ body{
 }
 
 /* Masthead */
-.masthead{ margin-bottom: 8px; }
+/* =========================
+   MASTHEAD (ESTILO PERIÓDICO)
+   ========================= */
+
+.masthead{
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(239, 32, 42); /* línea roja fuerte */
+}
+
+/* Línea doble como en la primera imagen */
+.masthead::before{
+  content:"";
+  display:block;
+  height: 2px;
+  background: rgb(239, 32, 42);
+  margin-bottom: 8px;
+}
+.masthead::after{
+  content:"";
+  display:block;
+  height: 1px;
+  background: rgba(239, 32, 42, .65);
+  margin-top: 8px;
+}
+
+/* Texto */
 .topline, .subline{
   display:flex;
   justify-content:space-between;
   gap:10px;
   font-family: 'Libre Baskerville', serif;
-  font-size: 9px;
-  letter-spacing: .6px;
-  opacity:.85;
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity:.95;
 }
+
+/* La segunda fila NO lleva border-top ya */
 .subline{
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255,120,160,.35);
+  margin-top: 10px;
+  padding-top: 0;
+  border-top: none;
 }
+
 @media (min-width: 900px){
   .paper{
     width: 560px; /* look revista */
