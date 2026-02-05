@@ -62,72 +62,97 @@ body{
 
 /* Título */
 /* ✅ Título EXACTO estilo Canva (como tu captura) */
-.title-big{
-  margin: 12px 0 18px;
-  text-align:center;
-  color: rgb(239, 32, 42);
-  line-height: 1;
+/* =========================
+   COVER (05 Razones...)
+   ========================= */
+.cover{
+  position: relative;
+  padding: 26px 10px 16px;
+  overflow: hidden; /* clave: nada se sale del recuadro */
 }
 
-.title-big .t-main{
-  display:block;
-  font-family: "Bodoni Moda", serif;
-  font-weight: 700;
-  font-size: clamp(64px, 9vw, 150px);
-  letter-spacing: -0.02em;
-  line-height: .92;
+.cover-title{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 100%;
 }
 
-.title-big .t-sub{
-  display:block;
-  font-family: "Bodoni Moda", serif;
-  font-weight: 700;
-  font-size: clamp(40px, 6vw, 110px);
-  letter-spacing: -0.01em;
-  line-height: .92;
-  margin-top: 2px;
-}
-
-/* Script grande “Mi elección Perfecta” */
-.title-big .t-script{
-  display:block;
-  font-family: "Great Vibes", cursive;
-  font-weight: 400;
-  font-size: clamp(46px, 7vw, 120px);
-  line-height: .9;
-  margin-top: -10px;            /* 🔥 lo mete debajo como en tu imagen */
+/* ÁNGELES */
+.angel{
+  position: absolute;
+  top: 10px;
+  width: clamp(110px, 14vw, 200px);
+  height: auto;
   opacity: .95;
-  text-shadow: 0 2px 0 rgba(255,255,255,.55); /* ligero “pop” tipo Canva */
+  pointer-events: none;
+  user-select: none;
 }
+.angel-left{ left: -20px; }
+.angel-right{ right: -20px; }
 
-/* En celular, baja un poquito el script para que no se encime feo */
-@media (max-width: 520px){
-  .title-big .t-script{ margin-top: -6px; }
-}
-
-.t1{
-  margin:0;
-  font-family:"Playfair Display", serif;
-  font-weight:700;
+/* Tipografía principal (serif fuerte, como tu referencia) */
+.cover-05{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
   color: rgb(239, 32, 42);
-  font-size: 34px;
   line-height: 1;
+  font-size: clamp(64px, 7vw, 110px);
+  margin-bottom: 6px;
 }
-.t2{
-  margin: 2px 0 0;
-  font-family:"Playfair Display", serif;
-  font-weight:600;
+
+.cover-razones{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
   color: rgb(239, 32, 42);
-  font-size: 16px;
-  opacity:.9;
+  line-height: .95;
+  font-size: clamp(56px, 7.5vw, 120px);
 }
-.t3{
-  margin: 2px 0 0;
-  font-family:"Playfair Display", serif;
+
+.cover-por,
+.cover-que{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: rgb(239, 32, 42);
+  line-height: 1.02;
+  font-size: clamp(34px, 4.6vw, 74px);
+}
+
+/* Script elegante (la parte “Mi elección Perfecta”) */
+.cover-script{
+  margin-top: 6px;
+  font-family: "Playfair Display", serif;
   font-style: italic;
-  font-weight:700;
+  font-weight: 400;
   color: rgb(239, 32, 42);
-  font-size: 20px;
+  line-height: 1;
+  font-size: clamp(34px, 5vw, 86px);
+  letter-spacing: .5px;
+}
+
+/* Corazón de huellas */
+.paw-heart{
+  position: absolute;
+  right: 10%;
+  top: 52%;
+  width: clamp(40px, 6vw, 90px);
+  height: auto;
+  opacity: .9;
+  pointer-events: none;
+}
+
+/* ✅ AJUSTE FINO SOLO EN PC: evita que se vea gigante */
+@media (min-width: 900px){
+  .cover{ padding: 30px 30px 22px; }
+
+  /* importante: en PC tu papel es más ancho, así que centramos y no permitimos “texto descontrolado” */
+  .cover-title{
+    margin: 0 auto;
+    max-width: 900px;
+  }
+
+  .angel-left{ left: -30px; }
+  .angel-right{ right: -30px; }
 }
 
 /* Grid 3x3 con líneas */
