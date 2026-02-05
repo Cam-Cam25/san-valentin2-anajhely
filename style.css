@@ -311,7 +311,7 @@ body{
 .sig{
   background: rgb(239, 32, 42);
   color:#fff;
-  border-radius: 0;          /* cuadraditas como tu foto */
+  border-radius: 14px;          /* cuadraditas como tu foto */
   padding: 10px 8px;
   font-size: 9px;
   line-height: 1.2;
@@ -339,7 +339,7 @@ body{
 .btn{
   flex:1;
   padding: 10px 10px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 2px solid rgba(239, 32, 42, .55);
   background: rgba(255, 120, 160, .35);
   color: rgb(239, 32, 42);
