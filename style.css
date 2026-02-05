@@ -2,492 +2,250 @@
 html,body{ height:100%; }
 body{
   margin:0;
+  color:#7a1730;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:#fdecee;
-  color:#7a1730;
 }
 
+/* Fondo suave */
 .bg{
   position:fixed; inset:0;
   background:
-    radial-gradient(circle at 15% 25%, rgba(255,80,140,.14), transparent 46%),
-    radial-gradient(circle at 85% 35%, rgba(255,160,210,.18), transparent 45%),
+    radial-gradient(circle at 20% 25%, rgba(255,80,140,.12), transparent 45%),
+    radial-gradient(circle at 80% 35%, rgba(255,160,210,.16), transparent 45%),
     radial-gradient(circle at 35% 85%, rgba(255,120,170,.10), transparent 55%),
     #fdecee;
-  z-index:-2;
+  z-index:-1;
 }
 
+/* Centro como en tu captura (mucho aire alrededor) */
 .wrap{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:28px 12px 70px;
+  align-items:center;
+  padding: 28px 12px;
 }
 
-/* ✅ CELULAR: ancho casi completo */
+/* Papel */
 .paper{
-  width: min(520px, 94vw);
+  width: min(420px, 92vw);
   background: rgba(255, 210, 226, .55);
-  border: 2px solid rgba(255, 120, 160, .65);
+  border: 2px solid rgba(255, 120, 160, .70);
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  box-shadow: 0 12px 35px rgba(0,0,0,.12);
   padding: 14px;
 }
-
-/* ✅ PC: grande tipo Canva */
-@media (min-width: 900px){
-  .wrap{ padding: 18px 10px 60px; }
-  .paper{
-    width: min(1050px, 92vw);
-    padding: 18px;
-    border-radius: 12px;
-  }
+.paper-inner{
+  border: 1px solid rgba(255,120,160,.30);
+  border-radius: 8px;
+  background: rgba(255,255,255,.28);
+  padding: 12px 12px 14px;
 }
 
-.paper-inner{ position:relative; }
-
-.page{
-  display:none;
-  padding: 0;              /* ✅ sin “tarjeta” interna */
-  border-radius: 0;
-  background: transparent;  /* ✅ deja que el fondo del .paper sea el real */
-  border: none;
-}
-.page.active{ display:block; }
-
-.masthead{ margin-bottom:12px; }
-
+/* Masthead */
+.masthead{ margin-bottom: 8px; }
 .topline, .subline{
   display:flex;
   justify-content:space-between;
   gap:10px;
   font-family: 'Libre Baskerville', serif;
-  font-size:10px;
-  letter-spacing:.5px;
+  font-size: 9px;
+  letter-spacing: .6px;
   opacity:.85;
 }
 .subline{
-  margin-top:8px;
-  border-top:1px solid rgba(255,120,160,.35);
-  padding-top:8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,120,160,.35);
 }
 
-/* ✅ TÍTULO: NO SE SALE EN CELULAR (clamp + wrap) */
-h1.logo{
-  font-family: 'UnifrakturCook', serif;
-  font-size: clamp(56px, 14vw, 140px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: rgb(239, 32, 42);
-  margin: 10px 0 12px;
+/* Título */
+.title-block{
   text-align:center;
-
-  /* claves para evitar overflow en móvil */
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  margin: 10px 0 10px;
+  padding: 6px 4px 2px;
 }
-
-/* HEADER COMPACT */
-.masthead.compact .logo{ display:none; }
-.masthead.compact{ margin-bottom:4px; }
-
-.hero{
-  position:relative;
-  margin:10px 0 14px;
-  overflow:hidden;
-  padding:18px 10px 12px;
-  border-top:1px solid rgba(255,120,160,.35);
-  border-bottom:1px solid rgba(255,120,160,.35);
+.t1{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-weight:700;
+  color: rgb(239, 32, 42);
+  font-size: 34px;
+  line-height: 1;
 }
-
-/* CUPIDOS */
-.cupid{
-  position:absolute;
-  top: 14px;
-  width: 140px;
-  height: auto;
-  opacity: .95;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
-}
-.cupid-left{ left: -18px; transform: rotate(-2deg); }
-.cupid-right{ right: -18px; transform: rotate(2deg); }
-
-@media (max-width: 520px){
-  .cupid{ width: 95px; top: 8px; opacity: .9; }
-  .cupid-left{ left: -22px; }
-  .cupid-right{ right: -22px; }
-}
-@media (min-width: 900px){
-  .cupid{ width: 190px; top: 18px; }
-  .cupid-left{ left: -24px; }
-  .cupid-right{ right: -24px; }
-}
-
-.hero-title{ margin:0; text-align:center; color:#b3003a; }
-
-.hero-title .small{
-  display:block;
-  font-family: 'Libre Baskerville', serif;
-  font-size:12px;
-  letter-spacing:2px;
-  margin-bottom:6px;
-  color:#b3003a;
-}
-
-.hero-title .big{
-  display:block;
-  line-height:1;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(48px, 9vw, 84px);
-  font-style: italic;
-  color:#b3003a;
-}
-
-.hero-center{ text-align:center; margin-top:10px; }
-.distribution{
-  margin:10px 0 0;
-  font-size:11px;
-  letter-spacing:.7px;
+.t2{
+  margin: 2px 0 0;
+  font-family:"Playfair Display", serif;
+  font-weight:600;
+  color: rgb(239, 32, 42);
+  font-size: 16px;
   opacity:.9;
 }
-.name-script{
-  margin:6px 0 0;
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  font-size:18px;
-  color:#c40040;
-}
-
-/* GRID diario + foto (igual en cel y compu, no se pasa a 1 columna) */
-.content-grid{
-  display:grid;
-  grid-template-columns: 1.18fr .82fr;
-  gap:12px;
-  margin-top:12px;
-  align-items:start;
-}
-@media (max-width: 520px){
-  .content-grid{ gap: 10px; }
-}
-
-/* Diario sin tarjeta blanca */
-.diary{
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-.diary-top{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding: 8px 0 10px;
-  margin: 0 0 10px;
-  border-top: 2px solid rgba(239,32,42,.75);
-  border-bottom: 2px solid rgba(239,32,42,.25);
-}
-.diary-left, .diary-right{
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  font-size: 16px;
-  color:#6e0f2a;
-}
-.dot{ opacity:.6; }
-
-.diary-text{
-  margin:0;
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  line-height: 1.5;
-  color:#6e0f2a;
-  letter-spacing: .5px;
-}
-@media (max-width: 520px){
-  .diary-text{ font-size: 18px; line-height: 1.45; }
-}
-
-/* Foto card */
-.photo-card{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-/* Love tag */
-.caption{
-  display:flex; justify-content:flex-end;
-  font-size:11px; opacity:.85;
-}
-.tag{ border-bottom:1px dotted rgba(179,0,58,.4); }
-
-/* ✅ FOTO estilo Canva (sin “espacios vacíos”) */
-.photo-frame{
-  margin: 0; /* 👈 IMPORTANTE: figure trae margen por defecto */
-  width: 100%;
-  border: 2px solid rgb(239, 32, 42);
-  background: #fdecee;
-  overflow: hidden;
-
-  /* Canva se siente “cuadrado” */
-  aspect-ratio: 1 / 1; /* cuadro */
-  display: block;
-}
-
-/* ✅ llena el cuadro como foto real */
-.photo-img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* 👈 CLAVE para que no se vea feo */
-  object-position: center;
-  display: block;
-}
-
-/* CEL: un poquito más alto para que se luzca */
-@media (max-width: 520px){
-  .photo-frame{
-    aspect-ratio: 4 / 5; /* un poco más “poster” en móvil */
-  }
-}
-
-/* Banner (imagen horizontal) */
-.banner-frame{
-  width:100%;
-  border:2px solid rgba(239, 32, 42, .65);
-  background:#fdecee;
-  overflow:hidden;
-
-  height: 92px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.banner-img{
-  width:100%;
-  height:100%;
-  object-fit: cover; /* banner sí puede cubrir */
-  display:block;
-}
-@media (max-width: 520px){
-  .banner-frame{ height: 80px; }
-}
-@media (min-width: 900px){
-  .banner-frame{ height: 110px; }
-}
-
-/* Botón */
-.mini-btn{
-  padding:10px;
-  border-radius:10px;
-  border:2px solid rgba(255,80,120,.7);
-  background: rgba(255,255,255,.55);
-  color:#b3003a;
-  font-weight:800;
-  cursor:pointer;
-}
-
-/* ✅ Botón rojo como "siguiente" */
-.mini-btn.danger{
-  background: rgb(239, 32, 42);
-  border-color: rgb(239, 32, 42);
-  color: white;
-  font-weight: 900;
-  letter-spacing: .4px;
-}
-.mini-btn.danger:hover{ filter: brightness(1.05); }
-.mini-btn.danger:active{ transform: scale(.98); }
-
-.tickets{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:12px;
-  margin-top:14px;
-}
-.ticket{
-  position:relative;
-  background: rgba(255,120,160,.20);
-  border:2px dashed rgba(179,0,58,.45);
-  border-radius:10px;
-  padding:12px 12px 12px 36px;
-}
-.ticket .cut{ position:absolute; left:10px; top:10px; opacity:.8; }
-.ticket-body small{ display:block; font-size:10px; letter-spacing:.8px; opacity:.85; }
-.ticket-body strong{ display:block; margin-top:4px; font-size:13px; }
-
-.footerline{
-  margin-top:12px;
-  text-align:center;
-  font-size:10px;
-  letter-spacing:1px;
-  opacity:.8;
-}
-
-/* PAGE 2 */
-.title-big{
-  margin:10px 0 14px;
-  text-align:center;
-  color:#b3003a;
+.t3{
+  margin: 2px 0 0;
   font-family:"Playfair Display", serif;
-  font-size:28px;
-  line-height:1.05;
+  font-style: italic;
+  font-weight:700;
+  color: rgb(239, 32, 42);
+  font-size: 20px;
 }
-.title-big span{ font-family:inherit; font-size:16px; opacity:.9; }
-.title-big em{ font-style:italic; font-size:28px; }
 
-.reasons-grid{
+/* Grid 3x3 con líneas */
+.grid9{
+  margin-top: 8px;
+  border: 1px solid rgba(239,32,42,.45);
+  border-radius: 6px;
+  overflow:hidden;
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:10px;
-  border-top:1px solid rgba(255,120,160,.35);
-  padding-top:12px;
+  grid-template-columns: repeat(3, 1fr);
 }
 .cell{
-  background: rgba(255,255,255,.45);
-  border:1px solid rgba(255,120,160,.25);
-  border-radius:10px;
-  padding:10px;
-  min-height:90px;
+  min-height: 92px;
+  padding: 10px 10px;
   position:relative;
+  background: rgba(255, 220, 232, .35);
+  border-right: 1px solid rgba(239,32,42,.35);
+  border-bottom: 1px solid rgba(239,32,42,.35);
 }
-.cell p{ margin:18px 0 0; font-size:12px; line-height:1.25; }
-.num{ position:absolute; left:10px; top:8px; font-weight:900; color:#b3003a; }
-.cell.center{ display:flex; align-items:center; justify-content:center; }
-.heart-big{ font-size:36px; color:#d1003f; filter: drop-shadow(0 6px 12px rgba(0,0,0,.10)); }
+.cell:nth-child(3n){ border-right: none; }
+.cell:nth-last-child(-n+3){ border-bottom: none; }
 
-.signals{ margin-top:14px; text-align:center; }
-.signals h3{ margin:0; font-size:11px; letter-spacing:2px; opacity:.85; }
-.signals h2{ margin:4px 0 4px; font-family:"Playfair Display", serif; font-size:24px; color:#b3003a; }
-.tiny{ margin:0 0 10px; font-size:11px; opacity:.85; }
-
-.signals-grid{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; }
-.signal{
-  background: rgba(209,0,63,.75);
-  color:white;
-  border-radius:10px;
-  padding:10px;
-  font-size:11px;
-  line-height:1.25;
-}
-
-/* PAGE 3 */
-.question-title{
-  margin:12px 0 6px;
-  text-align:center;
-  font-family:"Playfair Display", serif;
-  font-size:26px;
+.reason p{
+  margin: 18px 0 0;
+  font-family: "Libre Baskerville", serif;
+  font-size: 10px;
+  line-height: 1.25;
   color:#b3003a;
 }
-.question-text{ text-align:center; font-size:12px; line-height:1.35; margin:10px 0 10px; }
-.question-text p{ margin:6px 0; opacity:.95; }
-
-.big-ask{
-  margin:16px 0 14px;
-  text-align:center;
-  font-family:"Playfair Display", serif;
-  font-size:34px;
-  color:#6e0f2a;
+.num{
+  position:absolute;
+  top: 8px; left: 8px;
+  font-weight: 900;
+  color: rgb(239, 32, 42);
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
 }
-.big-ask span{ font-style:italic; color:#b3003a; }
+.num.center{ left: 50%; transform: translateX(-50%); }
 
-.choose{ text-align:center; margin:0 0 10px; font-size:12px; opacity:.9; }
-.choices{ display:flex; flex-direction:column; gap:10px; padding:0 10px 8px; }
-
-.choice{
-  padding:12px 12px;
-  border-radius:999px;
-  border:2px solid rgba(255,80,120,.75);
-  background: rgba(255,120,160,.55);
-  color:#b3003a;
-  font-weight:900;
-  cursor:pointer;
-  transition: transform .06s ease, filter .2s ease;
+.mid{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255, 220, 232, .20);
 }
-.choice:hover{ filter:brightness(1.05); }
-.choice:active{ transform:scale(.99); }
-.choice.ghost{ background: rgba(255,255,255,.60); }
-
-/* PAGE 4 */
-.page.confirmed{
-  background: linear-gradient(180deg, #d42a3a, #c0142e);
-  border-color: rgba(255,255,255,.15);
-  color: #fff6f8;
+.heart.big{
+  font-size: 26px;
+  color: rgb(239, 32, 42);
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
 }
-.confirmed-inner{ padding:26px 10px 22px; text-align:center; }
-.confirmed-inner h2{ margin:0 0 18px; font-family:"Playfair Display", serif; letter-spacing:.4px; }
 
-.lace-heart{
-  margin: 0 auto 16px;
-  width: 210px;
-  height: 170px;
-  position:relative;
+/* Corazones con letras A / J */
+.badge{
   display:flex;
   align-items:center;
   justify-content:center;
 }
-.lace-border{
-  position:absolute; inset:0;
-  border-radius: 60% 60% 70% 70% / 70% 70% 55% 55%;
-  background: rgba(255,255,255,.95);
-  box-shadow: 0 10px 25px rgba(0,0,0,.15);
-}
-.lace-border::before{
-  content:"";
-  position:absolute; inset:10px;
-  border-radius: inherit;
-  border: 3px dotted rgba(212,42,58,.45);
-}
-.lace-text{ position:relative; z-index:1; color:#c0142e; padding: 0 18px; }
-.script{ font-family:"Playfair Display", serif; font-style: italic; font-size:18px; margin:0; }
-
-.mini-hearts{
-  position:absolute; right:18px; bottom:16px;
-  display:flex; gap:8px;
-  z-index:2;
-}
-.mini{
-  width:34px; height:34px;
-  border-radius: 12px;
-  display:flex; align-items:center; justify-content:center;
-  background: rgba(255,255,255,.95);
-  color:#c0142e;
-  font-weight:900;
-  box-shadow: 0 8px 16px rgba(0,0,0,.12);
-}
-.confirmed-msg{ margin:14px 0 18px; font-size:12px; line-height:1.45; opacity:.95; }
-
-/* NAV */
-.nav{
-  margin-top:12px;
+.badge-heart{
+  width: 42px;
+  height: 38px;
+  background: rgb(239, 32, 42);
+  clip-path: path("M 21 36 C 4 23 2 16 2 10 C 2 4 7 0 12 0 C 16 0 19 2 21 5 C 23 2 26 0 30 0 C 35 0 40 4 40 10 C 40 16 38 23 21 36 Z");
   display:flex;
-  gap:12px;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 10px 20px rgba(0,0,0,.12);
+}
+.badge-heart span{
+  color:#fff;
+  font-weight:900;
+  font-family:"Libre Baskerville", serif;
+  transform: translateY(-1px);
+}
+
+/* Señales */
+.signals{
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(239,32,42,.35);
+}
+.signals-top{ text-align:center; }
+.kicker{
+  margin:0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  opacity:.85;
+  font-family:"Libre Baskerville", serif;
+}
+.signals h2{
+  margin: 4px 0 2px;
+  font-family:"Playfair Display", serif;
+  font-weight:800;
+  color: rgb(239, 32, 42);
+  font-size: 18px;
+}
+.tiny{
+  margin:0 0 10px;
+  font-size: 10px;
+  opacity:.85;
+  font-family:"Libre Baskerville", serif;
+}
+
+/* 3 tarjetas rojas */
+.signals-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.sig{
+  background: rgb(239, 32, 42);
+  color:#fff;
+  border-radius: 0;          /* cuadraditas como tu foto */
+  padding: 10px 8px;
+  font-size: 9px;
+  line-height: 1.2;
+  font-family:"Libre Baskerville", serif;
+  text-align:center;
+}
+
+/* Footer */
+.footerline{
+  margin-top: 10px;
+  text-align:center;
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity:.8;
+  font-family:"Libre Baskerville", serif;
+}
+
+/* Botones abajo */
+.nav{
+  margin-top: 10px;
+  display:flex;
   justify-content:space-between;
+  gap: 10px;
 }
 .btn{
   flex:1;
-  padding:12px 10px;
-  border-radius:8px;
-  border: 2px solid rgba(255, 80, 120, .75);
-  background: rgba(255, 120, 160, .55);
-  color:#b3003a;
-  font-weight:900;
-  letter-spacing:.4px;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border: 2px solid rgba(239, 32, 42, .55);
+  background: rgba(255, 120, 160, .35);
+  color: rgb(239, 32, 42);
+  font-weight: 900;
+  letter-spacing: .3px;
   cursor:pointer;
+  font-family:"Libre Baskerville", serif;
+  font-size: 10px;
+  text-decoration: underline;
 }
-.btn.ghost{ background: rgba(255,255,255,.55); }
-.btn:disabled{ opacity:.45; cursor:not-allowed; }
+.btn.ghost{
+  background: rgba(255,255,255,.35);
+}
 
-@media (max-width: 520px){
-  /* un pelín más de aire y proporción como Canva */
-  .content-grid{
-    grid-template-columns: 1.05fr .95fr; /* ✅ columna de foto un poquito más ancha */
-    gap: 10px;
-  }
-
-  /* botón más compacto como en la referencia */
-  .mini-btn{
-    padding: 10px 10px;
-    border-radius: 12px;
-    font-size: 13px;
-  }
+/* Móvil: que no se encoja feo */
+@media (max-width: 420px){
+  .paper{ width: 94vw; }
+  .signals-grid{ grid-template-columns: 1fr; }
+  .sig{ font-size: 10px; }
 }
