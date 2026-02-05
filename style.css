@@ -370,3 +370,177 @@ body{
   width: auto !important;
   min-width: 0 !important;
 }
+/* =========================
+   CUPONES (CSS PURO)
+   ========================= */
+
+.coupon-area{
+  margin-top: 14px;
+}
+
+/* Línea punteada + tijeras */
+.cutline{
+  position: relative;
+  height: 22px;
+  margin: 10px 0;
+}
+
+.cutline::before{
+  content:"";
+  position:absolute;
+  left: 12px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 2px dashed rgba(239, 32, 42, .75);
+}
+
+.scissors{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: rgb(239, 32, 42);
+  opacity: .9;
+}
+
+.scissors.left{ left: 6px; }
+.scissors.right{ right: 6px; }
+
+/* Contenedor de tickets */
+.tickets{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* Ticket */
+.ticket{
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  background: rgb(239, 32, 42);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 14px 25px rgba(0,0,0,.14);
+  min-height: 120px;
+  position: relative;
+}
+
+/* “Perforación” vertical */
+.ticket::after{
+  content:"";
+  position:absolute;
+  left: 92px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,.35);
+}
+
+/* Stub izquierdo */
+.stub{
+  position: relative;
+  padding: 12px 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Dientes tipo ticket */
+.stub::before{
+  content:"";
+  position:absolute;
+  top: 0;
+  right: -1px;
+  width: 14px;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 8px,
+      rgba(255,245,239,1) 8px 16px
+    );
+}
+
+/* Texto vertical */
+.stub-text{
+  font-family: "Libre Baskerville", serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,.95);
+  line-height: 1.2;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  opacity: .95;
+}
+
+/* Código vertical */
+.stub-code{
+  font-family: "Libre Baskerville", serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(255,255,255,.95);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 2px;
+  opacity: .95;
+}
+
+/* Cuerpo */
+.ticket-body{
+  background: rgb(255, 245, 239);
+  margin: 10px;
+  border: 2px solid rgb(239, 32, 42);
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding: 14px 10px;
+}
+
+/* Huecos semicirculares */
+.ticket-body::before,
+.ticket-body::after{
+  content:"";
+  position:absolute;
+  width: 18px;
+  height: 18px;
+  background: rgb(255, 245, 239);
+  border-radius: 50%;
+  left: 83px;
+}
+
+.ticket-body::before{
+  top: 10px;
+}
+.ticket-body::after{
+  bottom: 10px;
+}
+
+/* Texto */
+.ticket-label{
+  font-family: "Libre Baskerville", serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: rgb(239, 32, 42);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.ticket-title{
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(239, 32, 42);
+}
+
+/* Responsive */
+@media (max-width: 520px){
+  .tickets{
+    grid-template-columns: 1fr;
+  }
+}
