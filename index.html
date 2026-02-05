@@ -211,23 +211,31 @@
 
   let currentPage = 1;
 
-  function showPage(page){
-    if(page === 1){
-      page1.classList.add("active");
-      page2.classList.remove("active");
-      prevBtn.style.opacity = "0.5";
-      prevBtn.style.pointerEvents = "none";
-      nextBtn.style.opacity = "1";
-      nextBtn.style.pointerEvents = "auto";
-    }else{
-      page2.classList.add("active");
-      page1.classList.remove("active");
-      nextBtn.style.opacity = "0.5";
-      nextBtn.style.pointerEvents = "none";
-      prevBtn.style.opacity = "1";
-      prevBtn.style.pointerEvents = "auto";
-    }
+function showPage(page){
+  if(page === 1){
+    page1.classList.add("active");
+    page2.classList.remove("active");
+
+    prevBtn.style.opacity = "0.5";
+    prevBtn.style.pointerEvents = "none";
+
+    nextBtn.style.opacity = "1";
+    nextBtn.style.pointerEvents = "auto";
+
+  }else{
+    page2.classList.add("active");
+    page1.classList.remove("active");
+
+    nextBtn.style.opacity = "0.5";
+    nextBtn.style.pointerEvents = "none";
+
+    prevBtn.style.opacity = "1";
+    prevBtn.style.pointerEvents = "auto";
   }
+
+  /* 🔥 ESTO ES LO QUE HACE QUE SEA OTRA HOJA */
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
 
   nextBtn.addEventListener("click", () => {
     currentPage = 2;
