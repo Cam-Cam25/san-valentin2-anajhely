@@ -29,13 +29,14 @@ body{
 
 /* Papel */
 .paper{
-  width: min(420px, 92vw);
+  width: min(520px, 92vw); /* 👈 MÁS ANCHO */
   background: rgba(255, 210, 226, .55);
   border: 2px solid rgba(255, 120, 160, .70);
   border-radius: 10px;
   box-shadow: 0 12px 35px rgba(0,0,0,.12);
   padding: 14px;
 }
+
 .paper-inner{
   border: 1px solid rgba(255,120,160,.30);
   border-radius: 8px;
