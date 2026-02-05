@@ -92,23 +92,42 @@ body{
 .angel-right{ right: -20px; }
 
 /* Tipografía principal (serif fuerte, como tu referencia) */
-.title-big .t-main{
-  display:block;
-  font-family: "Bodoni Moda", serif;
-  font-weight: 700;
-  font-size: clamp(64px, 9vw, 150px);
-  letter-spacing: -0.02em;
-  line-height: .92;
+.cover-05{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: rgb(239, 32, 42);
+  line-height: 1;
+  font-size: clamp(64px, 7vw, 110px);
+  margin-bottom: 6px;
 }
 
-.title-big .t-sub{
-  display:block;
-  font-family: "Bodoni Moda", serif;
-  font-weight: 700;
-  font-size: clamp(40px, 6vw, 110px);
-  letter-spacing: -0.01em;
-  line-height: .92;
-  margin-top: 2px;
+.cover-razones{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: rgb(239, 32, 42);
+  line-height: .95;
+  font-size: clamp(56px, 7.5vw, 120px);
+}
+
+.cover-por,
+.cover-que{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: rgb(239, 32, 42);
+  line-height: 1.02;
+  font-size: clamp(34px, 4.6vw, 74px);
+}
+
+/* Script elegante (la parte “Mi elección Perfecta”) */
+.cover-script{
+  margin-top: 6px;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgb(239, 32, 42);
+  line-height: 1;
+  font-size: clamp(34px, 5vw, 86px);
+  letter-spacing: .5px;
 }
 
 /* Corazón de huellas */
