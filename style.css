@@ -61,11 +61,50 @@ body{
 }
 
 /* Título */
-.title-block{
+/* ✅ Título EXACTO estilo Canva (como tu captura) */
+.title-big{
+  margin: 12px 0 18px;
   text-align:center;
-  margin: 10px 0 10px;
-  padding: 6px 4px 2px;
+  color: rgb(239, 32, 42);
+  line-height: 1;
 }
+
+.title-big .t-main{
+  display:block;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 700;
+  font-size: clamp(64px, 9vw, 150px);
+  letter-spacing: -0.02em;
+  line-height: .92;
+}
+
+.title-big .t-sub{
+  display:block;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 110px);
+  letter-spacing: -0.01em;
+  line-height: .92;
+  margin-top: 2px;
+}
+
+/* Script grande “Mi elección Perfecta” */
+.title-big .t-script{
+  display:block;
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: clamp(46px, 7vw, 120px);
+  line-height: .9;
+  margin-top: -10px;            /* 🔥 lo mete debajo como en tu imagen */
+  opacity: .95;
+  text-shadow: 0 2px 0 rgba(255,255,255,.55); /* ligero “pop” tipo Canva */
+}
+
+/* En celular, baja un poquito el script para que no se encime feo */
+@media (max-width: 520px){
+  .title-big .t-script{ margin-top: -6px; }
+}
+
 .t1{
   margin:0;
   font-family:"Playfair Display", serif;
